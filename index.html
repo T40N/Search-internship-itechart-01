@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search-Internship itechart01</title>
-</head>
-<body>
-  <div class="container">
-    <div class="search-container">
-      <div class="search-options">
-        <button>onSubmit</button>
-        <button>onDebounce</button>
-        <button>onThrottle</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search-Internship itechart01</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search-container">
+        <div class="search-options">
+          <button id="onSubmitButton">onSubmit</button>
+          <button id="onDebounceButton">onDebounce</button>
+          <button id="onThrottleButton">onThrottle</button>
+        </div>
+        <div class="search-input" id="inputDiv"></div>
       </div>
-      <div class="search-input"></div>
+      <div class="list-container" id="dataDiv"></div>
     </div>
-    <div class="list-container"></div>
-  </div>
-</body>
+    <script type="module" src="src/index.js"></script>
+  </body>
 </html>
