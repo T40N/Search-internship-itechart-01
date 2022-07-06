@@ -40,9 +40,10 @@ class SearchInput {
       );
     }
     if (this.searchOption === "onThrottle") {
-      this.searchInput.addEventListener(
-        "input",
-        (event) => () => this.onThrottle(this.onThrottle, event, 500)
+      this.searchInput.addEventListener("input", (event) =>
+        this.onThrottle(() => {
+          this.filterArray(event.target.value);
+        }, 500)
       );
     }
   }
@@ -62,12 +63,11 @@ class SearchInput {
     this.debounceTimer = window.setTimeout(callback, time);
   }
 
-  onThrottle(callback, event, time) {
+  onThrottle(callback, time) {
+    console.log(this.throttlePouse);
     if (this.throttlePouse) return;
 
     this.throttlePouse = true;
-
-    this.filterArray(event.target.value);
 
     setTimeout(() => {
       callback();
