@@ -1,8 +1,7 @@
 import { createHtml } from "../../utility/createHtml.js";
 
 class Input {
-  constructor(type, className, id, placeholder, event) {
-    this.event = event;
+  constructor(type, className, id, placeholder) {
     this.type = type;
     this.className = className;
     this.id = id;
@@ -11,7 +10,12 @@ class Input {
   }
   render() {
     this.elem = createHtml(
-      `<input class="${this.className}" type="${this.type}" id="${this.id}" placeholder="${this.placeholder}">
+      `<input 
+        class="${this.className}" 
+        type="${this.type}" 
+        id="${this.id}" 
+        placeholder="${this.placeholder}"
+      >
       </input>`
     );
   }

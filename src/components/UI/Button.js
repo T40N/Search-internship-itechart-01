@@ -1,16 +1,19 @@
-import { createHtml } from "../../utility/createHtml";
+import { createHtml } from "../../utility/createHtml.js";
 
 class Button {
-  constructor(type, className, id, value, disability) {
+  constructor(type, className, id, value) {
     this.type = type;
     this.className = className;
     this.id = id;
     this.value = value;
-    this.disability = disability;
   }
   render() {
     this.elem = createHtml(`
-      <button class="${this.className} type="${this.type} id="${this.id}" disabled="${this.disability}">
+      <button 
+        class="${this.className} 
+        type="${this.type} 
+        id="${this.id}"
+      >
         ${this.value}
       </button>
     `);

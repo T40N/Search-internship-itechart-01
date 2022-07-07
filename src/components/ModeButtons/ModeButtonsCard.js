@@ -1,4 +1,4 @@
-import Button from "../UI/Button";
+import Button from "../UI/Button.js";
 import Card from "../UI/Card.js";
 
 class ModeButtonsCard extends Card {
@@ -10,33 +10,34 @@ class ModeButtonsCard extends Card {
       "button",
       "immediateButton",
       "immediateButton",
-      "Immediate",
-      false
+      "Immediate"
     );
 
     this.onSubmitButton = new Button(
       "button",
       "onSubmitButton",
       "onSubmitButton",
-      "onSubmit",
-      false
+      "onSubmit"
     );
 
     this.debouncedButton = new Button(
       "button",
       "debouncedButton",
       "debouncedButton",
-      "Debounced",
-      false
+      "Debounced"
     );
 
     this.throttledButton = new Button(
       "button",
       "throttledButton",
       "throttledButton",
-      "Throttled",
-      false
+      "Throttled"
     );
+
+    this.immediateButton.render();
+    this.onSubmitButton.render();
+    this.debouncedButton.render();
+    this.throttledButton.render();
   }
 
   mountButtons() {

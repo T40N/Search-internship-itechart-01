@@ -1,14 +1,19 @@
-import LIST_OF_DATA from "../context/dataList.js";
-import SearchContainer from "./Search/SearchContainer.js";
-import ListDisplay from "./List/ListDisplay.js";
 import { readData } from "../utility/readData.js";
+import ModeButtonsCard from "./ModeButtons/ModeButtonsCard.js";
 
 class App {
   constructor() {
     this.listOfData = readData();
-    this.searchOption = "onThrottle";
+    this.searchOption = "immidiate";
+    this.appContainer = document.getElementById("container");
   }
-  live() {}
+  live() {
+    this.modeButtonsCard = new ModeButtonsCard("buttonsCard", "buttonsCard");
+    this.modeButtonsCard.render();
+    this.modeButtonsCard.mount(this.appContainer);
+    this.modeButtonsCard.renderButtons();
+    this.modeButtonsCard.mountButtons();
+  }
 }
 
 export default App;

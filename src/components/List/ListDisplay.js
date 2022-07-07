@@ -1,4 +1,4 @@
-import ListElem from "./ListElem.js";
+import ListElem from "../UI/ListElem.js";
 
 class ListDisplay {
   constructor(listOfData) {

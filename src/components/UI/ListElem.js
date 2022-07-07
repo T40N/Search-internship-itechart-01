@@ -26,14 +26,21 @@ class ListElem {
 
   render() {
     this.elem = createHtml(
-      `<div class="${this.className}" id="${this.id}">
-        <h2>${this.name} ${this.surname}</h2>
-        <h5>${this.mostKnownWork}</h5>
-        <p>${this.born} - ${this.deceased}</p>
-        <div>${this.occupation.map((elem) => {
-          return `<p>${elem}</p>`;
-        })}</div>
-      </>`
+      `
+        <div 
+          class="${this.className}" 
+          id="${this.id}"
+        >
+          <h2>${this.name} ${this.surname}</h2>
+          <h5>${this.mostKnownWork}</h5>
+          <p>${this.born} - ${this.deceased}</p>
+          <div>
+            ${this.occupation.map((elem) => {
+              return `<p>${elem}</p>`;
+            })}
+          </div>
+        </>
+      `
     );
   }
   mount(container) {
