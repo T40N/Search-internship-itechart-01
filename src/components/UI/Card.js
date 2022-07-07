@@ -16,10 +16,8 @@ class Card {
         </div>
       `
     );
-    console.log(this.elem);
   }
   mount(container) {
-    console.log(this.elem);
     container.appendChild(this.elem);
   }
 }

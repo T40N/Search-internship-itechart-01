@@ -42,7 +42,7 @@ class ModeButtonsCard extends Card {
 
   mountButtons() {
     if (!this.elem) {
-      console.log("First render elem!");
+      console.log("First mount ButtonCard!");
       return;
     }
     this.immediateButton.mount(this.elem);

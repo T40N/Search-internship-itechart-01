@@ -1,25 +1,43 @@
-// newEventListener() {
-//   if (this.searchOption === "onSubmit") {
-//     this.searchInput.addEventListener("input", (event) => {
-//       this.inputValue = event.target.value;
-//     });
-//     this.searchForm.addEventListener("submit", (event) => {
-//       event.preventDefault();
-//       this.onSubmit(event);
-//     });
-//   }
-//   if (this.searchOption === "onDebounce") {
-//     this.searchInput.addEventListener("input", (event) =>
-//       this.onDebounce(() => this.updateDebounceValue(event), 500)
-//     );
-//   }
-//   if (this.searchOption === "onThrottle") {
-//     this.searchInput.addEventListener("input", (event) =>
-//       this.onThrottle(() => {
-//         this.filterArray(event.target.value);
-//       }, 500)
-//     );
-//   }
+let debounceTimer = 0;
+
+export const addSearchEvent = (input, searchOption) => {
+  if (this.searchOption === "onDebounce") {
+    this.searchInput.addEventListener("input", (event) =>
+      this.onDebounce(() => this.updateDebounceValue(event), 500)
+    );
+  }
+  if (this.searchOption === "onThrottle") {
+    this.searchInput.addEventListener("input", (event) =>
+      this.onThrottle(() => {
+        this.filterArray(event.target.value);
+      }, 500)
+    );
+  }
+};
+
+const newEventListener = (input, eventType, callback) => {
+  input.addEventListener(eventType, callback);
+};
+
+const onDebounce = (callback, time) => {
+  window.clearTimeout(this.debounceTimer);
+  debounceTimer = window.setTimeout(callback, time);
+};
+
+const updateDebounceValue = (event) => {
+  this.filterArray(event.target.value);
+};
+
+// to check letter if this aprouch is working with this methodology
+
+// if (this.searchOption === "onSubmit") {
+//   input.addEventListener("input", (event) => {
+//     this.inputValue = event.target.value;
+//   });
+//   this.searchForm.addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     this.onSubmit(event);
+//   });
 // }
 
 // onSubmit(event) {

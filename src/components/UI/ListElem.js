@@ -33,17 +33,18 @@ class ListElem {
         >
           <h2>${this.name} ${this.surname}</h2>
           <h5>${this.mostKnownWork}</h5>
-          <p>${this.born} - ${this.deceased}</p>
-          <div>
+          <p>Lived from: ${this.born}, to: ${this.deceased}</p>
+          <p>
             ${this.occupation.map((elem) => {
-              return `<p>${elem}</p>`;
+              return `${elem} `;
             })}
-          </div>
+          </p>
         </>
       `
     );
   }
   mount(container) {
+    console.log(container);
     container.appendChild(this.elem);
   }
 }
