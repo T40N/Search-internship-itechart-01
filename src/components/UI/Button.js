@@ -1,25 +1,23 @@
 import { createHtml } from "../../utility/createHtml";
 
 class Button {
-  constructor(type, className, id, value, availability, container, event) {
-    this.event = event;
+  constructor(type, className, id, value, disability) {
     this.type = type;
     this.className = className;
     this.id = id;
     this.value = value;
-    this.availability = availability;
-    this.container = container;
+    this.disability = disability;
   }
   render() {
     this.elem = createHtml(`
-      <button class="${this.className} type="${this.type} id="${this.id}" disabled="${this.availability}">
+      <button class="${this.className} type="${this.type} id="${this.id}" disabled="${this.disability}">
         ${this.value}
       </button>
     `);
-    this.container.appendChild(this.elem);
   }
-  NewEventListener() {}
-  SetEventListener() {}
+  mount(container) {
+    container.appendChild(this.elem);
+  }
 }
 
 export default Button;

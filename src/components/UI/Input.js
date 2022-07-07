@@ -1,21 +1,22 @@
 import { createHtml } from "../../utility/createHtml.js";
 
 class Input {
-  constructor(type, className, id, placeholder, container, event) {
+  constructor(type, className, id, placeholder, event) {
     this.event = event;
     this.type = type;
     this.className = className;
     this.id = id;
-    this.container = container;
+    this.placeholder = placeholder;
     this.element = "";
-    this.render();
   }
   render() {
     this.elem = createHtml(
-      `<input class="${this.className}" type="${this.type}" id="${this.id}" placeholder="${placeholder}">
+      `<input class="${this.className}" type="${this.type}" id="${this.id}" placeholder="${this.placeholder}">
       </input>`
     );
-    this.container.appendChild(this.elem);
+  }
+  mount(container) {
+    container.appendChild(this.elem);
   }
 }
 
