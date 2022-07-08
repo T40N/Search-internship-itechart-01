@@ -20,6 +20,9 @@ class Card {
   mount(container) {
     container.appendChild(this.elem);
   }
+  unmount() {
+    this.elem.remove();
+  }
 }
 
 export default Card;

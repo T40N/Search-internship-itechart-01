@@ -8,7 +8,11 @@ class SearchSelect extends Select {
   }
   renderOptions() {
     this.options = this.optionsValue.map((optionValue) => {
-      const optionElem = new Option(optionValue, optionValue);
+      const optionElem = new Option(
+        optionValue,
+        optionValue,
+        `select__option--${optionValue}`
+      );
       optionElem.render();
       return optionElem;
     });
@@ -16,6 +20,11 @@ class SearchSelect extends Select {
   mountOptions() {
     this.options.forEach((option) => {
       option.mount(this.elem);
+    });
+  }
+  unmountOptions() {
+    this.options.forEach((option) => {
+      option.unmount();
     });
   }
 }

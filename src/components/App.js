@@ -1,3 +1,4 @@
+import { newEventListener } from "../utility/eventListenerActions.js";
 import ListCard from "./List/ListCard.js";
 import ModeButtonsCard from "./ModeButtons/ModeButtonsCard.js";
 import SearchCard from "./Search/SearchCard.js";
@@ -11,7 +12,11 @@ class App {
     console.log(this.listOfData);
   }
   live() {
-    this.modeButtonsCard = new ModeButtonsCard("buttonsCard", "buttonsCard");
+    this.modeButtonsCard = new ModeButtonsCard(
+      "buttonsCard",
+      "buttonsCard",
+      this.changeSearchOption
+    );
     this.modeButtonsCard.render();
     this.modeButtonsCard.mount(this.appContainer);
     this.modeButtonsCard.renderButtons();
@@ -26,6 +31,13 @@ class App {
     this.listCard.mount(this.appContainer);
     this.listCard.renderList();
     this.listCard.mountList();
+  }
+
+  changeSearchOption(searchOption) {
+    this.searchOption = searchOption;
+  }
+  changeListOfData(newData) {
+    this.listOfData = newData;
   }
 }
 

@@ -1,4 +1,4 @@
-import ListElem from "../UI/ListElem.js";
+import ListElem from "./ListElem.js";
 import Card from "../UI/Card.js";
 
 class ListCard extends Card {
@@ -26,7 +26,6 @@ class ListCard extends Card {
     });
   }
   mountList() {
-    console.log(this.elem);
     if (!this.elem) {
       console.log("First mount ListCard!");
       return;
@@ -36,14 +35,12 @@ class ListCard extends Card {
     });
   }
 
-  changeListOfData(listOfData) {
-    let dataDiv = document.getElementById("dataDiv");
-    while (dataDiv.firstChild) {
-      dataDiv.removeChild(dataDiv.lastChild);
-    }
-    this.listOfData = listOfData;
-    this.render();
+  unmount() {
+    this.listOfElements.forEach((element) => {
+      element.unmount();
+    });
   }
+  changeDataList() {}
 }
 
 export default ListCard;

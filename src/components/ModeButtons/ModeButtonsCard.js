@@ -1,35 +1,37 @@
+import { newEventListener } from "../../utility/eventListenerActions.js";
 import Button from "../UI/Button.js";
 import Card from "../UI/Card.js";
 
 class ModeButtonsCard extends Card {
-  constructor(className, id) {
+  constructor(className, id, buttonChangeFunction) {
     super(className, id);
+    this.buttonChangeFunction = buttonChangeFunction;
   }
   renderButtons() {
     this.immediateButton = new Button(
       "button",
-      "immediateButton",
+      "buttonsCard__button buttonsCard__button--immediate",
       "immediateButton",
       "Immediate"
     );
 
     this.onSubmitButton = new Button(
       "button",
-      "onSubmitButton",
+      "buttonsCard__button buttonsCard__button--submit",
       "onSubmitButton",
       "onSubmit"
     );
 
     this.debouncedButton = new Button(
       "button",
-      "debouncedButton",
+      "buttonsCard__button buttonsCard__button--debounce",
       "debouncedButton",
       "Debounced"
     );
 
     this.throttledButton = new Button(
       "button",
-      "throttledButton",
+      "buttonsCard__button buttonsCard__button--throttle",
       "throttledButton",
       "Throttled"
     );
@@ -49,6 +51,52 @@ class ModeButtonsCard extends Card {
     this.onSubmitButton.mount(this.elem);
     this.debouncedButton.mount(this.elem);
     this.throttledButton.mount(this.elem);
+  }
+  unmountButtons() {
+    this.immediateButton.unmount();
+    this.onSubmitButton.unmount();
+    this.debouncedButton.unmount();
+    this.throttledButton.unmount();
+  }
+  getImmediateButton() {
+    return this.immediateButton.elem;
+  }
+  getOnSubmitButton() {
+    return this.onSubmitButton.elem;
+  }
+  getDebouncedButton() {
+    return this.debouncedButton.elem;
+  }
+  getThrottledButton() {
+    return this.throttledButton.elem;
+  }
+  addImmediateButtonEventListener() {
+    newEventListener(
+      this.immediateButton.elem,
+      "click",
+      this.buttonChangeFunction("immediate")
+    );
+  }
+  addOnSubmitButtonEventListener() {
+    newEventListener(
+      this.onSubmitButton.elem,
+      "click",
+      this.buttonChangeFunction("onSubmit")
+    );
+  }
+  addDebouncedButtonEventListener() {
+    newEventListener(
+      this.debouncedButton.elem,
+      "click",
+      this.buttonChangeFunction("debounce")
+    );
+  }
+  addThrottledButtonEventListener() {
+    newEventListener(
+      this.throttledButton.elem,
+      "click",
+      this.buttonChangeFunction("throttle")
+    );
   }
 }
 

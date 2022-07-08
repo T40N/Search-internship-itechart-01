@@ -23,6 +23,9 @@ class Input {
     console.log(container);
     container.appendChild(this.elem);
   }
+  unmount() {
+    this.elem.remove();
+  }
 }
 
 export default Input;

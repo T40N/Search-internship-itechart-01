@@ -47,6 +47,9 @@ class ListElem {
     console.log(container);
     container.appendChild(this.elem);
   }
+  unmount() {
+    this.elem.remove();
+  }
 }
 
 export default ListElem;
