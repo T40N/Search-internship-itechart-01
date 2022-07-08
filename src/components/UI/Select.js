@@ -1,11 +1,11 @@
-import { createHtml } from "../../utility/createHtml";
+import { createHtml } from "../../utility/createHtml.js";
 
 class Select {
   constructor(name, id, className) {
     this.name = name;
     this.id = id;
     this.className = className;
-    this.elem = elem;
+    this.elem = "";
   }
   render() {
     this.elem = createHtml(

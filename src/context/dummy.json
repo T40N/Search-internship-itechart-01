@@ -3,9 +3,7 @@
     "id": 1,
     "name": "Claude",
     "surname": "Debussy",
-    "occupation": [
-      "musician, composer, pianist"
-    ],
+    "occupation": ["musician", "composer", "pianist"],
     "nationality": "French",
     "mostKnownWork": "Clair de Lune",
     "lived": {
@@ -17,9 +15,7 @@
     "id": 2,
     "name": "Pablo",
     "surname": "Picasso",
-    "occupation": [
-      "painter, sculptor, printmaker, ceramicist, theatre designer"
-    ],
+    "occupation": ["painter", "sculptor", "printmaker", "ceramicist", "theatre designer"],
     "nationality": "Spanish",
     "mostKnownWork": "The Weeping Woman",
     "lived": {
@@ -31,9 +27,7 @@
     "id": 3,
     "name": "Frida",
     "surname": "Kahlo",
-    "occupation": [
-      "painter"
-    ],
+    "occupation": ["painter"],
     "nationality": "Mexican",
     "mostKnownWork": "Self-Portrait with Thorn Necklace and Hummingbird",
     "lived": {
@@ -45,9 +39,7 @@
     "id": 4,
     "name": "Zdzislaw",
     "surname": "Beksinski",
-    "occupation": [
-      "painter, photographer, sculptor"
-    ],
+    "occupation": ["painter", "photographer", "sculptor"],
     "nationality": "Polish",
     "mostKnownWork": "AB84",
     "lived": {
@@ -59,9 +51,7 @@
     "id": 5,
     "name": "Johann Sebastian",
     "surname": "Bach",
-    "occupation": [
-      "composer, musician"
-    ],
+    "occupation": ["composer", "musician"],
     "nationality": "German",
     "mostKnownWork": "Cello Suite No. 1 in G Major",
     "lived": {
@@ -73,9 +63,7 @@
     "id": 6,
     "name": "Jacek",
     "surname": "Malczewski",
-    "occupation": [
-      "painter"
-    ],
+    "occupation": ["painter"],
     "nationality": "Polish",
     "mostKnownWork": "Melancholia",
     "lived": {
@@ -87,11 +75,7 @@
     "id": 7,
     "name": "Edgar Allan",
     "surname": "Poe",
-    "occupation": [
-      "poet",
-      "editor",
-      "literary critic"
-    ],
+    "occupation": ["poet", "editor", "literary critic"],
     "nationality": "American",
     "mostKnownWork": "The Raven",
     "lived": {
@@ -103,9 +87,7 @@
     "id": 8,
     "name": "Domenico",
     "surname": "Scarlatti",
-    "occupation": [
-      "composer"
-    ],
+    "occupation": ["composer"],
     "nationality": "Italian",
     "mostKnownWork": "Sonata K.32",
     "lived": {
@@ -117,11 +99,7 @@
     "id": 9,
     "name": "John Ronald Reuel",
     "surname": "Tolkien ",
-    "occupation": [
-      "writer",
-      "poet",
-      "philologist"
-    ],
+    "occupation": ["writer", "poet", "philologist"],
     "nationality": "English",
     "mostKnownWork": "The Lord of The Rings",
     "lived": {
@@ -133,12 +111,7 @@
     "id": 10,
     "name": "Michelangelo",
     "surname": "Buonarroti ",
-    "occupation": [
-      "sculptor",
-      "painter",
-      "architect",
-      "poet"
-    ],
+    "occupation": ["sculptor", "painter", "architect", "poet"],
     "nationality": "Italian",
     "mostKnownWork": "Sistine Chapel ceiling",
     "lived": {

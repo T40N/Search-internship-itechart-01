@@ -1,4 +1,4 @@
-import { createHtml } from "../../utility/createHtml";
+import { createHtml } from "../../utility/createHtml.js";
 
 class Option {
   constructor(value, text) {
