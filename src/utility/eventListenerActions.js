@@ -20,11 +20,38 @@ export const onThrottle = (callback, time) => {
   }, time);
 };
 
-export const onImmidiate = (event) => {
-  return event.target.value;
+export const onImmidiate = (callback) => {
+  callback;
 };
 
 export const onDebounce = (callback, time) => {
   window.clearTimeout(debounceTimer);
   debounceTimer = window.setTimeout(callback, time);
+};
+
+export const filterArrayByName = (input, array) => {
+  return array.filter((elem) => {
+    if (elem.name.toLowerCase().search(input.toLowerCase()) >= 0) {
+      return true;
+    }
+    if (elem.surname.toLowerCase().search(input.toLowerCase()) >= 0) {
+      return true;
+    }
+  });
+};
+
+export const filterArrayByOccupation = (input, array) => {
+  return array.filter((elem) => {
+    if (elem.occupation.toLowerCase().search(input.toLowerCase()) >= 0) {
+      return true;
+    }
+  });
+};
+
+export const filterArrayByNationallity = (input, array) => {
+  return array.filter((elem) => {
+    if (elem.nationality.toLowerCase().search(input.toLowerCase()) >= 0) {
+      return true;
+    }
+  });
 };

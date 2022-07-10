@@ -1,11 +1,14 @@
+import { newEventListener } from "../../utility/eventListenerActions.js";
 import Card from "../UI/Card.js";
 import Input from "../UI/Input.js";
 import SearchSelect from "./SearchSelect.js";
 
 class SearchCard extends Card {
-  constructor(className, id, changeSearchOption) {
+  constructor(className, id, searchOption, listofData, changeListOfData) {
     super(className, id);
-    this.changeSearchOption = changeSearchOption;
+    this.searchOption = searchOption;
+    this.listofData = listofData;
+    this.changeListOfData = changeListOfData;
   }
   renderElems() {
     this.input = new Input(
@@ -38,7 +41,8 @@ class SearchCard extends Card {
     this.input.unmount();
     this.searchSelect.unmount();
   }
-  addInputEventListener() {}
+  addInputEventListener() {
+  }
   addSelectEventListener() {}
 }
 

@@ -71,30 +71,22 @@ class ModeButtonsCard extends Card {
     return this.throttledButton.elem;
   }
   addImmediateButtonEventListener() {
-    newEventListener(
-      this.immediateButton.elem,
-      "click",
+    newEventListener(this.immediateButton.elem, "click", () =>
       this.buttonChangeFunction("immediate")
     );
   }
   addOnSubmitButtonEventListener() {
-    newEventListener(
-      this.onSubmitButton.elem,
-      "click",
+    newEventListener(this.onSubmitButton.elem, "click", () =>
       this.buttonChangeFunction("onSubmit")
     );
   }
   addDebouncedButtonEventListener() {
-    newEventListener(
-      this.debouncedButton.elem,
-      "click",
+    newEventListener(this.debouncedButton.elem, "click", () =>
       this.buttonChangeFunction("debounce")
     );
   }
   addThrottledButtonEventListener() {
-    newEventListener(
-      this.throttledButton.elem,
-      "click",
+    newEventListener(this.throttledButton.elem, "click", () =>
       this.buttonChangeFunction("throttle")
     );
   }
