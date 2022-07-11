@@ -119,10 +119,10 @@ class App {
   changeInputEventListener(input) {
     if (this.searchOption === "immediate") {
       if (this.category === "name") {
+        newEventListener(input.elem, "submit", (event) => {
+          event.preventDefault();
+        });
         newEventListener(input.elemInput, "input", (event) => {
-          newEventListener(input.elem, "submit", (event) => {
-            event.preventDefault();
-          });
           this.listOfData = onImmidiate(
             filterArrayByName(event.target.value, data)
           );

@@ -54,7 +54,6 @@ class ListElem {
     container.appendChild(this.elem);
   }
   unmount() {
-    console.log(elem);
     this.elem.remove();
   }
 }
