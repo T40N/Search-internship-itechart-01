@@ -41,9 +41,6 @@ class SearchCard extends Card {
     this.input.unmount();
     this.searchSelect.unmount();
   }
-  addInputEventListener() {
-  }
-  addSelectEventListener() {}
 }
 
 export default SearchCard;

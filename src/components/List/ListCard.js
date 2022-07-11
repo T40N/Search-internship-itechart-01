@@ -8,7 +8,7 @@ class ListCard extends Card {
     console.log(listOfData);
   }
   renderList() {
-    console.log(this.listOfData);
+    this.listOfElements = [];
     this.listOfElements = this.listOfData.map((element) => {
       const listElem = new ListElem(
         element.id,
@@ -19,11 +19,14 @@ class ListCard extends Card {
         element.mostKnownWork,
         element.lived.born,
         element.lived.deceased,
-        "listElem"
+        element.img,
+        `listCard__listElem listCard__listElem--${element.id}`,
+        `listElem__img listElem__img--${element.id}`
       );
       listElem.render();
       return listElem;
     });
+    console.log(this.listOfElements);
   }
   mountList() {
     if (!this.elem) {
@@ -35,12 +38,14 @@ class ListCard extends Card {
     });
   }
 
-  unmount() {
+  unmountList() {
     this.listOfElements.forEach((element) => {
-      element.unmount();
+      console.log(element.elem);
     });
   }
-  changeDataList() {}
+  changeDataList(newData) {
+    this.listOfData = newData;
+  }
 }
 
 export default ListCard;

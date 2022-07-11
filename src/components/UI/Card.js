@@ -18,6 +18,7 @@ class Card {
     );
   }
   mount(container) {
+    console.log(container);
     container.appendChild(this.elem);
   }
   unmount() {

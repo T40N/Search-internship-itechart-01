@@ -1,11 +1,9 @@
-import { newEventListener } from "../../utility/eventListenerActions.js";
 import Button from "../UI/Button.js";
 import Card from "../UI/Card.js";
 
 class ModeButtonsCard extends Card {
-  constructor(className, id, buttonChangeFunction) {
+  constructor(className, id) {
     super(className, id);
-    this.buttonChangeFunction = buttonChangeFunction;
   }
   renderButtons() {
     this.immediateButton = new Button(
@@ -69,26 +67,6 @@ class ModeButtonsCard extends Card {
   }
   getThrottledButton() {
     return this.throttledButton.elem;
-  }
-  addImmediateButtonEventListener() {
-    newEventListener(this.immediateButton.elem, "click", () =>
-      this.buttonChangeFunction("immediate")
-    );
-  }
-  addOnSubmitButtonEventListener() {
-    newEventListener(this.onSubmitButton.elem, "click", () =>
-      this.buttonChangeFunction("onSubmit")
-    );
-  }
-  addDebouncedButtonEventListener() {
-    newEventListener(this.debouncedButton.elem, "click", () =>
-      this.buttonChangeFunction("debounce")
-    );
-  }
-  addThrottledButtonEventListener() {
-    newEventListener(this.throttledButton.elem, "click", () =>
-      this.buttonChangeFunction("throttle")
-    );
   }
 }
 

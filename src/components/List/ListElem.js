@@ -10,7 +10,9 @@ class ListElem {
     mostKnownWork,
     born,
     deceased,
-    className
+    img,
+    className,
+    imgClass
   ) {
     this.id = id;
     this.name = name;
@@ -20,8 +22,10 @@ class ListElem {
     this.mostKnownWork = mostKnownWork;
     this.born = born;
     this.deceased = deceased;
+    this.img = img;
     this.elem = "";
     this.className = className;
+    this.imgClass = imgClass;
   }
 
   render() {
@@ -31,8 +35,11 @@ class ListElem {
           class="${this.className}" 
           id="${this.id}"
         >
+          <img src="${this.img}" alt="${this.name} ${this.surname}" class="${
+        this.imgClass
+      }"></img>
           <h2>${this.name} ${this.surname}</h2>
-          <h5>${this.mostKnownWork}</h5>
+          <h5>Most known work: ${this.mostKnownWork}</h5>
           <p>Lived from: ${this.born}, to: ${this.deceased}</p>
           <p>
             ${this.occupation.map((elem) => {
@@ -44,10 +51,10 @@ class ListElem {
     );
   }
   mount(container) {
-    console.log(container);
     container.appendChild(this.elem);
   }
   unmount() {
+    console.log(elem);
     this.elem.remove();
   }
 }

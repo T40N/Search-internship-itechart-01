@@ -10,7 +10,7 @@ class Option {
   render() {
     this.elem = createHtml(
       `
-        <option value="${this.value} class="${this.className}">
+        <option value="${this.value}" class="${this.className}">
           ${this.text}
         </option>
       `

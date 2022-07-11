@@ -1,12 +1,15 @@
+import data from "/src/store/dummy.json" assert { type: "json" };
+
 let debounceTimer = 0;
+let throttleTimer;
 
 export const newEventListener = (input, eventType, callback) => {
   input.addEventListener(eventType, callback);
 };
 
-export const onSubmit = (event, valueToSubmit) => {
+export const onSubmit = (event, callback) => {
   event.preventDefault();
-  return valueToSubmit;
+  return callback;
 };
 
 export const onThrottle = (callback, time) => {
@@ -21,7 +24,7 @@ export const onThrottle = (callback, time) => {
 };
 
 export const onImmidiate = (callback) => {
-  callback;
+  return callback;
 };
 
 export const onDebounce = (callback, time) => {
@@ -30,27 +33,43 @@ export const onDebounce = (callback, time) => {
 };
 
 export const filterArrayByName = (input, array) => {
+  if (input.trim() === "") {
+    return data;
+  }
   return array.filter((elem) => {
-    if (elem.name.toLowerCase().search(input.toLowerCase()) >= 0) {
+    if (elem.name.toLowerCase().search(input.toLowerCase().trim()) >= 0) {
       return true;
     }
-    if (elem.surname.toLowerCase().search(input.toLowerCase()) >= 0) {
+    if (elem.surname.toLowerCase().search(input.toLowerCase().trim()) >= 0) {
       return true;
     }
   });
 };
 
 export const filterArrayByOccupation = (input, array) => {
+  if (input.trim() === "") {
+    return data;
+  }
   return array.filter((elem) => {
-    if (elem.occupation.toLowerCase().search(input.toLowerCase()) >= 0) {
+    if (
+      elem.occupation
+        .join(", ")
+        .toLowerCase()
+        .search(input.toLowerCase().trim()) >= 0
+    ) {
       return true;
     }
   });
 };
 
 export const filterArrayByNationallity = (input, array) => {
+  if (input.trim() === "") {
+    return data;
+  }
   return array.filter((elem) => {
-    if (elem.nationality.toLowerCase().search(input.toLowerCase()) >= 0) {
+    if (
+      elem.nationality.toLowerCase().search(input.toLowerCase().trim()) >= 0
+    ) {
       return true;
     }
   });

@@ -6,18 +6,21 @@ class Input {
     this.className = className;
     this.id = id;
     this.placeholder = placeholder;
-    this.element = "";
+    this.elem = "";
   }
   render() {
     this.elem = createHtml(
-      `<input 
-        class="${this.className}" 
-        type="${this.type}" 
-        id="${this.id}" 
-        placeholder="${this.placeholder}"
-      >
-      </input>`
+      `<form>
+        <input 
+          class="${this.className}" 
+          type="${this.type}" 
+          id="${this.id}" 
+          placeholder="${this.placeholder}"
+        >
+        </input>
+      </form>`
     );
+    this.elemInput = this.elem.children[0];
   }
   mount(container) {
     console.log(container);
