@@ -23,7 +23,6 @@ class Input {
     this.elemInput = this.elem.children[0];
   }
   mount(container) {
-    console.log(container);
     container.appendChild(this.elem);
   }
   unmount() {

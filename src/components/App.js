@@ -158,7 +158,6 @@ class App {
     if (this.searchOption === "onSubmit") {
       if (this.category === "name") {
         newEventListener(input.elemInput, "input", (event) => {
-          console.log(event.target.value);
           this.inputValue = event.target.value;
         });
         newEventListener(input.elem, "submit", (event) => {

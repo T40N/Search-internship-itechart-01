@@ -12,7 +12,10 @@ class ListElem {
     deceased,
     img,
     className,
-    imgClass
+    imgClass,
+    pClass,
+    h3Class,
+    h6Class
   ) {
     this.id = id;
     this.name = name;
@@ -26,6 +29,9 @@ class ListElem {
     this.elem = "";
     this.className = className;
     this.imgClass = imgClass;
+    this.pClass = pClass;
+    this.h3Class = h3Class;
+    this.h6Class = h6Class;
   }
 
   render() {
@@ -35,18 +41,16 @@ class ListElem {
           class="${this.className}" 
           id="${this.id}"
         >
-          <img src="${this.img}" alt="${this.name} ${this.surname}" class="${
-        this.imgClass
-      }"></img>
-          <h2>${this.name} ${this.surname}</h2>
-          <h5>Most known work: ${this.mostKnownWork}</h5>
-          <p>Lived from: ${this.born}, to: ${this.deceased}</p>
-          <p>
-            ${this.occupation.map((elem) => {
-              return `${elem} `;
-            })}
+          <h1>${this.name} ${this.surname}</h1>
+          <img src="${this.img}" alt="${this.name} ${this.surname}"
+           class="${this.imgClass}"></img>
+          <h6 class="${this.h6Class}">Most known work</h6>
+          <h2 class="${this.h3Class}">${this.mostKnownWork}</h2>
+          <p class="${this.pClass}">
+            ${this.occupation.join(", ")}
           </p>
-        </>
+          <p class="${this.pClass}">${this.born} to ${this.deceased}</p>
+        </div>
       `
     );
   }

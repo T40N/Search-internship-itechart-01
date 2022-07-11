@@ -5,7 +5,7 @@
   --natural-200: #269ee3;
   --natural-100: #6fbeec;
   font-family: "Roboto", sans-serif;
-  background-color: var(--natural-100);
+  background-color: var(#ffffff);
 }
 body {
   margin: 0;
@@ -20,13 +20,13 @@ body {
 
 .buttonsCard {
   width: 100%;
-  height: 50px;
+  height: 5rem;
   background-color: var(--natural-300);
   display: grid;
   align-items: center;
   justify-items: center;
   gap: 1.2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .buttonsCard__button {
@@ -62,9 +62,10 @@ body {
   justify-content: space-around;
   margin-top: 50px;
   width: 60%;
-  height: 50px;
+  height: 30%;
   padding: 1.2rem;
   background-color: var(--natural-300);
+  box-shadow: 0px 8px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
 }
 
@@ -72,8 +73,8 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  width: 200px;
-  min-width: 40px;
+  width: 10rem;
+  min-width: 120px;
   color: var(--natural-500);
   box-shadow: 0px 6px 4px 2px rgba(0, 0, 0, 0.25);
   height: 40px;
@@ -98,8 +99,7 @@ body {
   border-radius: 15px;
   padding-left: 0.8rem;
   height: 40px;
-  margin: 0;
-  width: 30%;
+  width: 10rem;
   font-family: inherit;
   font-size: inherit;
   font-weight: 700;
@@ -120,24 +120,63 @@ body {
   align-items: center;
   justify-items: center;
   gap: 1.2rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 100px;
 }
 
 .listCard__listElem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 0;
   width: 70%;
-  height: 500px;
-  background-color: var(--natural-300);
-  border-radius: 8%;
-  box-shadow: 0px 6px 4px 2px rgba(0, 0, 0, 0.25);
-  color: #ffffff;
+  min-height: 500px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 8px 4px 2px rgba(0, 0, 0, 0.25);
+  color: var(--natural-500);
 }
 
 .listElem__img {
-  width: 160px;
-  height: 200px;
-  border-radius: 8%;
+  width: 100%;
+  height: 300px;
+}
+
+.listElem__p {
+  justify-self: flex-end;
+  text-align: center;
+  margin: 0;
+}
+
+.listElem__h3 {
+  margin: 0;
+}
+
+.listElem__h6 {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .listCard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .buttonsCard {
+    grid-template-columns: repeat(2, 1fr);
+    height: 8rem;
+  }
+  .searchCard {
+    flex-direction: column;
+  }
+
+  .searchCard__select {
+    margin-top: 0.8rem;
+  }
+  .listCard {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
