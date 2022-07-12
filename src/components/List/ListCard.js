@@ -22,7 +22,7 @@ class ListCard extends Card {
         `listCard__listElem listCard__listElem--${element.id}`,
         `listElem__img listElem__img--${element.id}`,
         `listElem__p listElem__p--${element.id}`,
-        `listElem__h3 listElem__h3--${element.id}`,
+        `listElem__h2 listElem__h2--${element.id}`,
         `listElem__h6 listElem__h6--${element.id}`
       );
       listElem.render();

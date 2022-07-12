@@ -14,7 +14,7 @@ class ListElem {
     className,
     imgClass,
     pClass,
-    h3Class,
+    h2Class,
     h6Class
   ) {
     this.id = id;
@@ -30,7 +30,7 @@ class ListElem {
     this.className = className;
     this.imgClass = imgClass;
     this.pClass = pClass;
-    this.h3Class = h3Class;
+    this.h2Class = h2Class;
     this.h6Class = h6Class;
   }
 
@@ -45,7 +45,7 @@ class ListElem {
           <img src="${this.img}" alt="${this.name} ${this.surname}"
            class="${this.imgClass}"></img>
           <h6 class="${this.h6Class}">Most known work</h6>
-          <h2 class="${this.h3Class}">${this.mostKnownWork}</h2>
+          <h2 class="${this.h2Class}">${this.mostKnownWork}</h2>
           <p class="${this.pClass}">
             ${this.occupation.join(", ")}
           </p>
