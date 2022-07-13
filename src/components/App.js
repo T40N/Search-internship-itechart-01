@@ -1,13 +1,10 @@
 import {
-  filterArrayByName,
-  filterArrayByNationallity,
-  filterArrayByOccupation,
+  addPreventDefaultEvent,
   newEventListener,
-  onDebounce,
-  onImmidiate,
-  onSubmit,
-  onThrottle,
 } from "../utility/eventListenerActions.js";
+import { onThrottle } from "../utility/onThrottle.js";
+import { onDebounce } from "../utility/onDebounce.js";
+import { filterArray } from "../utility/filterArray.js";
 import ListCard from "./List/ListCard.js";
 import ModeButtonsCard from "./ModeButtons/ModeButtonsCard.js";
 import SearchCard from "./Search/SearchCard.js";
@@ -45,60 +42,50 @@ class App {
     this.listCard.renderList();
     this.listCard.mountList();
 
-    this.addDebouncedButtonEventListener();
-    this.addImmediateButtonEventListener();
-    this.addOnSubmitButtonEventListener();
-    this.addThrottledButtonEventListener();
+    this.addButtonSearchEventListener(
+      this.modeButtonsCard.getDebouncedButton(),
+      "click",
+      "debounce"
+    );
+    this.addButtonSearchEventListener(
+      this.modeButtonsCard.getImmediateButton(),
+      "click",
+      "immediate"
+    );
+    this.addButtonSearchEventListener(
+      this.modeButtonsCard.getOnSubmitButton(),
+      "click",
+      "onSubmit"
+    );
+    this.addButtonSearchEventListener(
+      this.modeButtonsCard.getThrottledButton(),
+      "click",
+      "throttle"
+    );
 
     this.changeInputEventListener(this.searchCard.input);
-    this.addSelectEventListener();
-  }
-  addImmediateButtonEventListener() {
-    newEventListener(this.modeButtonsCard.getImmediateButton(), "click", () =>
-      this.changeSearchOption("immediate")
-    );
-  }
-  addOnSubmitButtonEventListener() {
-    newEventListener(this.modeButtonsCard.getOnSubmitButton(), "click", () =>
-      this.changeSearchOption("onSubmit")
-    );
-  }
-  addDebouncedButtonEventListener() {
-    newEventListener(this.modeButtonsCard.getDebouncedButton(), "click", () =>
-      this.changeSearchOption("debounce")
-    );
-  }
-  addThrottledButtonEventListener() {
-    newEventListener(this.modeButtonsCard.getThrottledButton(), "click", () =>
-      this.changeSearchOption("throttle")
-    );
+    this.addSelectEventListener(this.searchCard.searchSelect.elem);
   }
 
-  addSelectEventListener() {
-    newEventListener(this.searchCard.searchSelect.elem, "change", (event) =>
+  addButtonSearchEventListener(button, event, option) {
+    newEventListener(button, event, () => this.changeSearchOption(option));
+  }
+
+  addSelectEventListener(select) {
+    console.log(select);
+    newEventListener(select, "change", (event) =>
       this.changeSearchCategory(event.target[event.target.selectedIndex].value)
     );
   }
 
   changeSearchCategory(category) {
     this.category = category;
-    if (category === "name") {
-      this.listOfData = filterArrayByName(this.inputValue, data);
-      this.changeDisplayedData();
-    }
-    if (category === "nationality") {
-      this.listOfData = filterArrayByNationallity(this.inputValue, data);
-      this.changeDisplayedData();
-    }
-    if (category === "occupation") {
-      this.listOfData = filterArrayByOccupation(this.inputValue, data);
-      this.changeDisplayedData();
-    }
+    this.listOfData = filterArray(category, this.inputValue, data);
     this.searchCard.unmountElems();
     this.searchCard.mountElems();
     this.changeInputEventListener(this.searchCard.input);
+    this.changeDisplayedData();
   }
-
   changeSearchOption(searchOption) {
     this.searchCard.unmountElems();
     this.searchCard.renderElems();
@@ -106,7 +93,7 @@ class App {
     this.searchOption = searchOption;
     this.inputValue = "";
     this.changeInputEventListener(this.searchCard.input);
-    this.addSelectEventListener();
+    this.addSelectEventListener(this.searchCard.searchSelect.elem);
   }
   changeDisplayedData() {
     this.listCard.unmount();
@@ -116,169 +103,43 @@ class App {
     this.listCard.renderList();
     this.listCard.mountList();
   }
+  filterAndDisplay() {
+    this.listOfData = filterArray(this.category, this.inputValue, data);
+    this.changeDisplayedData();
+  }
   changeInputEventListener(input) {
-    if (this.searchOption === "immediate") {
-      if (this.category === "name") {
+    addPreventDefaultEvent(input.elem);
+    switch (this.searchOption) {
+      case "immediate":
+        newEventListener(input.elemInput, "input", (event) => {
+          this.inputValue = event.target.value;
+          this.filterAndDisplay();
+        });
+        break;
+      case "onSubmit":
+        newEventListener(input.elemInput, "input", (event) => {
+          this.inputValue = event.target.value;
+        });
         newEventListener(input.elem, "submit", (event) => {
           event.preventDefault();
+          this.filterAndDisplay();
         });
-        newEventListener(input.elemInput, "input", (event) => {
-          this.listOfData = onImmidiate(
-            filterArrayByName(event.target.value, data)
-          );
-          this.inputValue = event.target.value;
-          this.changeDisplayedData();
-        });
-      }
-      if (this.category === "nationality") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
-          this.listOfData = onImmidiate(
-            filterArrayByNationallity(event.target.value, data)
-          );
-          this.inputValue = event.target.value;
-          this.changeDisplayedData();
-        });
-      }
-      if (this.category === "occupation") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
-          this.listOfData = onImmidiate(
-            filterArrayByOccupation(event.target.value, data)
-          );
-          this.inputValue = event.target.value;
-          this.changeDisplayedData();
-        });
-      }
-    }
-    if (this.searchOption === "onSubmit") {
-      if (this.category === "name") {
+      case "debounce":
+        addPreventDefaultEvent(input.elem);
         newEventListener(input.elemInput, "input", (event) => {
           this.inputValue = event.target.value;
-        });
-        newEventListener(input.elem, "submit", (event) => {
-          this.listOfData = onSubmit(
-            event,
-            filterArrayByName(this.inputValue, data)
-          );
-          this.changeDisplayedData();
-        });
-      }
-      if (this.category === "nationality") {
-        newEventListener(input.elemInput, "input", (event) => {
-          this.inputValue = event.target.value;
-        });
-        newEventListener(input.elem, "submit", (event) => {
-          this.listOfData = onSubmit(
-            event,
-            filterArrayByNationallity(this.inputValue, data)
-          );
-          this.inputValue = event.target.value;
-          this.changeDisplayedData();
-        });
-      }
-      if (this.category === "occupation") {
-        newEventListener(input.elemInput, "input", (event) => {
-          this.inputValue = event.target.value;
-        });
-        newEventListener(input.elem, "submit", (event) => {
-          this.listOfData = onSubmit(
-            event,
-            filterArrayByOccupation(this.inputValue, data)
-          );
-          this.changeDisplayedData();
-        });
-      }
-    }
-    if (this.searchOption === "debounce") {
-      if (this.category === "name") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
           onDebounce(() => {
-            this.listOfData = filterArrayByName(event.target.value, data);
-            this.inputValue = event.target.value;
-            this.changeDisplayedData();
-          }, 500);
+            this.filterAndDisplay();
+          }, 2000);
+        });
+      case "throttle":
+        addPreventDefaultEvent(input.elem);
+        newEventListener(input.elemInput, "input", (event) => {
           this.inputValue = event.target.value;
-          this.changeDisplayedData();
-        });
-      }
-      if (this.category === "nationality") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
-          onDebounce(() => {
-            this.listOfData = filterArrayByNationallity(
-              event.target.value,
-              data
-            );
-            this.inputValue = event.target.value;
-            this.changeDisplayedData();
-          }, 500);
-        });
-      }
-      if (this.category === "occupation") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
-          onDebounce(() => {
-            this.listOfData = filterArrayByOccupation(event.target.value, data);
-            this.inputValue = event.target.value;
-            this.changeDisplayedData();
-          }, 500);
-        });
-      }
-    }
-    if (this.searchOption === "throttle") {
-      if (this.category === "name") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
           onThrottle(() => {
-            this.listOfData = filterArrayByName(event.target.value, data);
-            this.inputValue = event.target.value;
-            this.changeDisplayedData();
-          }, 500);
+            this.filterAndDisplay();
+          }, 2000);
         });
-      }
-      if (this.category === "nationality") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
-          onThrottle(() => {
-            this.listOfData = filterArrayByNationallity(
-              event.target.value,
-              data
-            );
-            this.inputValue = event.target.value;
-            this.changeDisplayedData();
-          }, 500);
-          this.inputValue = event.target.value;
-          this.changeDisplayedData();
-        });
-      }
-      if (this.category === "occupation") {
-        newEventListener(input.elem, "submit", (event) => {
-          event.preventDefault();
-        });
-        newEventListener(input.elemInput, "input", (event) => {
-          onThrottle(() => {
-            this.listOfData = filterArrayByOccupation(event.target.value, data);
-            this.inputValue = event.target.value;
-            this.changeDisplayedData();
-          }, 500);
-        });
-      }
     }
   }
 }
