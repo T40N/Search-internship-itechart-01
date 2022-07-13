@@ -31,7 +31,7 @@ const filterArrayByName = (input, array) => {
   });
 };
 
-const filterArrayByOccupation = (input, array) => {
+const filterArrayByOccupation = (input, array, property) => {
   return array.filter((elem) => {
     const endOccupation = elem.occupation.join(", ").toLowerCase();
 
