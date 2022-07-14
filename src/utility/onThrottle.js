@@ -1,15 +1,16 @@
 export const onThrottle = (callback, time) => {
-  let throttleTimer;
-  onThrottleFunction(throttleTimer, callback, time);
+  var wait = false;
+  return (...args) => {
+    if (!wait) {
+      callback(...args);
+      wait = true;
+      setTimeout(function () {
+        wait = false;
+      }, time);
+    }
+  };
 };
 
-const onThrottleFunction = (throttleTimer, callback, time) => {
-  if (throttleTimer) return;
-
-  throttleTimer = true;
-
-  setTimeout(() => {
-    callback();
-    throttleTimer = false;
-  }, time);
-};
+export const onThrottleHandler = onThrottle((callback, ...args) => {
+  callback(...args);
+});

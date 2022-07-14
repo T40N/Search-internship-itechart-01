@@ -6,7 +6,7 @@ class Select extends Component {
     this.setName(name);
   }
   setName(name) {
-    this.element.setAtribute("name", name);
+    this.element.setAttribute("name", name);
     this.name = name;
   }
 }

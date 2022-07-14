@@ -1,4 +1,4 @@
-import Component from "../BaseComponent/Component";
+import Component from "../BaseComponent/Component.js";
 
 class Text extends Component {
   constructor(container, elementType, className, id, content) {

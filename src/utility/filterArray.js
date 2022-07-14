@@ -20,7 +20,7 @@ export const filterArray = (filterOption, input, array) => {
 const filterArrayByName = (input, array) => {
   return array.filter((elem) => {
     const endName = elem.name.toLowerCase();
-    const endSurname = elem.name.toLowerCase();
+    const endSurname = elem.surname.toLowerCase();
 
     if (endName.search(input) >= 0) {
       return true;

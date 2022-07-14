@@ -1,4 +1,4 @@
-import Component from "../BaseComponent/Component";
+import Component from "../BaseComponent/Component.js";
 
 class Form extends Component {
   constructor(container, className, id) {

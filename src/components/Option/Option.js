@@ -6,7 +6,7 @@ class Option extends Text {
     this.setValue(value);
   }
   setValue(value) {
-    this.element.setAtribute("value", value);
+    this.element.setAttribute("value", value);
     this.value = value;
   }
 }

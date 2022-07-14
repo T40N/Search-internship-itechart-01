@@ -3,17 +3,16 @@ class Component {
     this.container = container;
     this.elementType = elementType;
     this.className = className;
-    this.id = id;
-    this.element = this.render();
+    this.render();
     this.mount();
     this.addClass(this.className);
-    this.setId(this.id);
+    this.setId(id);
   }
   render() {
-    return document.createElement(elementType);
+    this.element = document.createElement(this.elementType);
   }
   mount() {
-    container.appendChild(this.element);
+    this.container.appendChild(this.element);
   }
   unmount() {
     this.element.remove();
@@ -35,7 +34,7 @@ class Component {
     return;
   }
   setId(id) {
-    this.element.setAtribute("id", id);
+    this.element.setAttribute("id", id);
     this.id = id;
   }
 

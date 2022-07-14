@@ -1,9 +1,17 @@
 export const onDebounce = (callback, time) => {
-  let debounceTimer;
-  onDebounceFunction(debounceTimer, callback, time);
+  let timeout;
+
+  return (...args) => {
+    const later = () => {
+      clearTimeout(timeout);
+      callback(...args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, time);
+  };
 };
 
-const onDebounceFunction = (debounceTimer, callback, time) => {
-  window.clearTimeout(debounceTimer);
-  debounceTimer = window.setTimeout(callback, time);
-};
+export const onDebounceHandler = onDebounce((callback) => {
+  callback();
+});
