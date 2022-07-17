@@ -13,4 +13,4 @@ export const onThrottle = (callback, time) => {
 
 export const onThrottleHandler = onThrottle((callback, ...args) => {
   callback(...args);
-});
+}, 500);

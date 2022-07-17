@@ -12,6 +12,6 @@ export const onDebounce = (callback, time) => {
   };
 };
 
-export const onDebounceHandler = onDebounce((callback) => {
-  callback();
-});
+export const onDebounceHandler = onDebounce((callback, ...args) => {
+  callback(...args);
+}, 500);

@@ -29,12 +29,12 @@ export const setOnSubmitEventListener = (
 
 export const setOnDebounceEventListener = (input, callback) => {
   newEventListener(input, "input", (event) => {
-    onDebounceHandler(callback(event));
+    onDebounceHandler(callback, event);
   });
 };
 
-export const setOnThrottleDebounceEventListener = (input, callback) => {
+export const setOnThrottleEventListener = (input, callback) => {
   newEventListener(input, "input", (event) => {
-    onThrottleHandler(callback(event));
+    onThrottleHandler(callback, event);
   });
 };

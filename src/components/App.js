@@ -1,10 +1,11 @@
 import {
   addPreventDefaultEvent,
   newEventListener,
+  setOnDebounceEventListener,
   setOnImmediateEventListener,
+  setOnSubmitEventListener,
+  setOnThrottleEventListener,
 } from "../utility/eventListenerActions.js";
-import { onThrottle } from "../utility/onThrottle.js";
-import { onDebounce } from "../utility/onDebounce.js";
 import { filterArray } from "../utility/filterArray.js";
 import data from "/src/store/dummy.json" assert { type: "json" };
 import Button from "./Button/Button.js";
@@ -17,7 +18,6 @@ import listElem from "./listElem/listElem.js";
 class App {
   constructor() {
     this.listOfData = data;
-    this.searchOption = "immediate";
     this.category = "name";
     this.inputValue = "";
     this.appContainer = document.getElementById("container");
@@ -29,37 +29,8 @@ class App {
     this.createSearchSelect(this.searchCard);
     this.displayData();
 
-    newEventListener(this.immediateButton.element, "click", (event) => {
-      addPreventDefaultEvent(this.searchForm.element);
-      setOnImmediateEventListener(this.searchInput.element, this.searchEvent);
-    });
-
-    // this.addButtonSearchEventListener(
-    //   this.onDebounceButton.element,
-    //   "click",
-    //   "debounce"
-    // );
-    // this.addButtonSearchEventListener(
-    //   this.immediateButton.element,
-    //   "click",
-    //   "immediate"
-    // );
-    // this.addButtonSearchEventListener(
-    //   this.onSubmitButton.element,
-    //   "click",
-    //   "onSubmit"
-    // );
-    // this.addButtonSearchEventListener(
-    //   this.onThrottleButton.element,
-    //   "click",
-    //   "throttle"
-    // );
-
-    this.changeInputEventListener(
-      this.searchForm.element,
-      this.searchInput.element
-    );
-    this.addSelectEventListener(this.searchSelect.element);
+    this.addButtonsEventListeners();
+    this.addInputOnImmidiateEventListener();
   }
   createContainers(appContainer) {
     this.createModeButtonCard(appContainer);
@@ -122,6 +93,10 @@ class App {
       "Occupation",
       "occupation"
     );
+
+    newEventListener(this.searchSelect.element, "change", (event) => {
+      this.changeSearchCategory(event.target.value);
+    });
   }
   createButtons(container) {
     this.immediateButton = new Button(
@@ -149,37 +124,77 @@ class App {
       "onThrottle"
     );
   }
-  addSelectEventListener(select) {
-    console.log(select);
-    newEventListener(select, "change", (event) =>
-      this.changeSearchCategory(event.target[event.target.selectedIndex].value)
-    );
-  }
   changeSearchCategory(category) {
     this.category = category;
-    this.listOfData = filterArray(category, this.inputValue, data);
-    this.searchForm.unmount();
-    this.searchSelect.unmount();
-    this.createSearchForm(this.searchCard);
-    this.createSearchSelect(this.searchCard);
-    this.changeInputEventListener(
-      this.searchForm.element,
-      this.searchInput.element
-    );
-    this.changeDisplayedData();
+    this.filterAndDisplay();
   }
-  changeSearchOption(searchOption) {
+  updateSearchInputs() {
     this.searchForm.unmount();
     this.searchSelect.unmount();
     this.createSearchForm(this.searchCard);
     this.createSearchSelect(this.searchCard);
-    this.searchOption = searchOption;
-    this.inputValue = "";
-    this.changeInputEventListener(
-      this.searchForm.element,
-      this.searchInput.element
+  }
+  addButtonsEventListeners() {
+    newEventListener(
+      this.immediateButton.element,
+      "click",
+      this.addInputOnImmidiateEventListener.bind(this)
     );
-    this.addSelectEventListener(this.searchSelect.element);
+    newEventListener(
+      this.onSubmitButton.element,
+      "click",
+      this.addInputOnSubmitEventListener.bind(this)
+    );
+    newEventListener(
+      this.onDebounceButton.element,
+      "click",
+      this.addInputOnDebounceEventListener.bind(this)
+    );
+    newEventListener(
+      this.onThrottleButton.element,
+      "click",
+      this.addInputOnThrottleEventListener.bind(this)
+    );
+  }
+  addInputOnImmidiateEventListener() {
+    this.inputValue = "";
+    this.updateSearchInputs();
+    addPreventDefaultEvent(this.searchForm.element);
+    setOnImmediateEventListener(
+      this.searchInput.element,
+      this.searchEvent.bind(this)
+    );
+  }
+  addInputOnSubmitEventListener() {
+    this.inputValue = "";
+    this.updateSearchInputs();
+    setOnSubmitEventListener(
+      this.searchForm.element,
+      this.searchInput.element,
+      this.changeInputValue.bind(this),
+      (event) => {
+        event.preventDefault();
+        this.filterAndDisplay();
+      }
+    );
+  }
+  addInputOnDebounceEventListener() {
+    this.inputValue = "";
+    this.updateSearchInputs();
+    addPreventDefaultEvent(this.searchForm.element);
+    setOnDebounceEventListener(
+      this.searchInput.element,
+      this.searchEvent.bind(this)
+    );
+  }
+  addInputOnThrottleEventListener() {
+    this.inputValue = "";
+    this.updateSearchInputs();
+    addPreventDefaultEvent(this.searchForm.element);
+    setOnThrottleEventListener(
+      this.searchInput.element,
+      this.searchEvent.bind(this)
+    );
   }
   changeDisplayedData() {
     this.listCard.remove();
@@ -207,12 +222,12 @@ class App {
     this.changeDisplayedData();
   }
   searchEvent(event) {
-    this.inputValue = event.target.value;
+    this.changeInputValue(event);
     this.filterAndDisplay();
   }
   changeInputValue(event) {
     this.inputValue = event.target.value;
   }
 }
-//call different functions each time the button is clicked it can help
+
 export default App;
