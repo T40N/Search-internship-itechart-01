@@ -1,6 +1,6 @@
-import data from "/src/store/dummy.json" assert { type: "json" };
+import data from "/src/data/dummy.json" assert { type: "json" };
 
-export const filterArray = (filterOption, input, array, data) => {
+export const filterArray = (filterOption, input, array) => {
   const endInput = input.toLowerCase().trim();
 
   if (endInput === "") {

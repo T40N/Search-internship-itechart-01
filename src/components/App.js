@@ -7,7 +7,7 @@ import {
   setOnThrottleEventListener,
 } from "../utility/eventListenerActions.js";
 import { filterArray } from "../utility/filterArray.js";
-import data from "/src/store/dummy.json" assert { type: "json" };
+import data from "/src/data/dummy.json" assert { type: "json" };
 import Button from "./Button/Button.js";
 import Form from "./Form/Form.js";
 import Input from "./Input/Input.js";
