@@ -1,10 +1,8 @@
-import data from "/src/data/dummy.json" assert { type: "json" };
-
 export const filterArray = (filterOption, input, array) => {
   const endInput = input.toLowerCase().trim();
 
   if (endInput === "") {
-    return data;
+    return array;
   }
   if (filterOption === "occupation") {
     return filterArrayByOccupation(endInput, array);
@@ -13,7 +11,7 @@ export const filterArray = (filterOption, input, array) => {
   return array.filter((elem) => {
     const elemToFilter = elem[filterOption].toLowerCase();
     if (filterOption === "name") {
-      const surname = elem[filterOption].toLowerCase();
+      const surname = elem.surname.toLowerCase();
       if (surname.search(endInput) >= 0) {
         return true;
       }

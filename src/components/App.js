@@ -7,17 +7,17 @@ import {
   setOnThrottleEventListener,
 } from "../utility/eventListenerActions.js";
 import { filterArray } from "../utility/filterArray.js";
-import data from "/src/data/dummy.json" assert { type: "json" };
 import Button from "./Button/Button.js";
 import Form from "./Form/Form.js";
 import Input from "./Input/Input.js";
 import Select from "./Select/Select.js";
 import Option from "./Option/Option.js";
 import listElem from "./listElem/listElem.js";
+import Data from "../data/Data.js";
 
 class App {
   constructor() {
-    this.listOfData = data;
+    this.listOfData = new Data();
     this.category = "name";
     this.inputValue = "";
     this.appContainer = document.getElementById("container");
@@ -202,7 +202,7 @@ class App {
     this.displayData();
   }
   displayData() {
-    this.listOfData.forEach((element) => {
+    this.listOfData.getData().forEach((element) => {
       new listElem(
         this.listCard,
         "listCard__listElem",
@@ -218,7 +218,9 @@ class App {
     });
   }
   filterAndDisplay() {
-    this.listOfData = filterArray(this.category, this.inputValue, data);
+    this.listOfData.setData(
+      filterArray(this.category, this.inputValue, this.listOfData.getBaseData())
+    );
     this.changeDisplayedData();
   }
   searchEvent(event) {
