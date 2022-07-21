@@ -35,9 +35,12 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
+            plugins: ["@babel/plugin-syntax-import-assertions"],
           },
         },
-        test: /\.(png|svg|jpeg|gif)$/i,
+      },
+      {
+        test: /\.(png|svg|jpeg|jpg|gif)$/i,
         type: "asset/resource",
       },
     ],

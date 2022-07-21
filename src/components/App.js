@@ -203,18 +203,20 @@ class App {
   }
   displayData() {
     this.listOfData.getData().forEach((element) => {
-      new listElem(
-        this.listCard,
-        "listCard__listElem",
-        "listElem",
-        `${element.name} ${element.surname}`,
-        element.mostKnownWork,
-        element.nationality,
-        element.img,
-        `${element.name} ${element.surname}`,
-        element.occupation.join(", ").trim(),
-        `${element.lived.born}, to ${element.lived.deceased}`
-      );
+      import(element.img).then((img) => {
+        new listElem(
+          this.listCard,
+          "listCard__listElem",
+          "listElem",
+          `${element.name} ${element.surname}`,
+          element.mostKnownWork,
+          element.nationality,
+          element.img,
+          `${element.name} ${element.surname}`,
+          element.occupation.join(", ").trim(),
+          `${element.lived.born}, to ${element.lived.deceased}`
+        );
+      });
     });
   }
   filterAndDisplay() {
