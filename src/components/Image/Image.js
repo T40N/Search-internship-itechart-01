@@ -7,8 +7,7 @@ class Image extends Component {
     this.setAlt(alt);
   }
   setSrc(src) {
-    this.element.setAttribute("src", src);
-    this.src = src;
+    this.element.src = src;
   }
   setAlt(alt) {
     this.element.setAttribute("alt", alt);

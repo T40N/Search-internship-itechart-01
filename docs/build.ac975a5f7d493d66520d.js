@@ -16,7 +16,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utility/eventListenerActions.js */ \"./src/utility/eventListenerActions.js\");\n/* harmony import */ var _utility_filterArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utility/filterArray.js */ \"./src/utility/filterArray.js\");\n/* harmony import */ var _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Button/Button.js */ \"./src/components/Button/Button.js\");\n/* harmony import */ var _Form_Form_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Form/Form.js */ \"./src/components/Form/Form.js\");\n/* harmony import */ var _Input_Input_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Input/Input.js */ \"./src/components/Input/Input.js\");\n/* harmony import */ var _Select_Select_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Select/Select.js */ \"./src/components/Select/Select.js\");\n/* harmony import */ var _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Option/Option.js */ \"./src/components/Option/Option.js\");\n/* harmony import */ var _listElem_listElem_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./listElem/listElem.js */ \"./src/components/listElem/listElem.js\");\n/* harmony import */ var _data_Data_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../data/Data.js */ \"./src/data/Data.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\n\n\n\n\n\n\n\n\n\n\n\nvar App = /*#__PURE__*/function () {\n  function App() {\n    _classCallCheck(this, App);\n\n    this.listOfData = new _data_Data_js__WEBPACK_IMPORTED_MODULE_8__[\"default\"]();\n    this.category = \"name\";\n    this.inputValue = \"\";\n    this.appContainer = document.getElementById(\"container\");\n  }\n\n  _createClass(App, [{\n    key: \"live\",\n    value: function live() {\n      this.createContainers(this.appContainer);\n      this.createButtons(this.modeButtonsCard);\n      this.createSearchForm(this.searchCard);\n      this.createSearchSelect(this.searchCard);\n      this.displayData();\n      this.addButtonsEventListeners();\n      this.addInputOnImmidiateEventListener();\n    }\n  }, {\n    key: \"createContainers\",\n    value: function createContainers(appContainer) {\n      this.createModeButtonCard(appContainer);\n      this.createSearchCard(appContainer);\n      this.createListCard(appContainer);\n    }\n  }, {\n    key: \"createModeButtonCard\",\n    value: function createModeButtonCard(appContainer) {\n      this.modeButtonsCard = document.createElement(\"div\");\n      this.modeButtonsCard.classList.add(\"buttonsCard\");\n      this.modeButtonsCard.setAttribute(\"id\", \"buttonsCard\");\n      appContainer.appendChild(this.modeButtonsCard);\n    }\n  }, {\n    key: \"createSearchCard\",\n    value: function createSearchCard(appContainer) {\n      this.searchCard = document.createElement(\"div\");\n      this.searchCard.classList.add(\"searchCard\");\n      this.searchCard.setAttribute(\"id\", \"searchCard\");\n      appContainer.appendChild(this.searchCard);\n    }\n  }, {\n    key: \"createListCard\",\n    value: function createListCard(appContainer) {\n      this.listCard = document.createElement(\"div\");\n      this.listCard.classList.add(\"listCard\");\n      this.listCard.setAttribute(\"id\", \"listCard\");\n      appContainer.appendChild(this.listCard);\n    }\n  }, {\n    key: \"createSearchForm\",\n    value: function createSearchForm(container) {\n      this.searchForm = new _Form_Form_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"](container, \"searchCard__form\", \"searchForm\");\n      this.searchInput = new _Input_Input_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"](this.searchForm.element, \"searchCard__input\", \"searchInput\", \"text\", \"search\");\n    }\n  }, {\n    key: \"createSearchSelect\",\n    value: function createSearchSelect(container) {\n      var _this = this;\n\n      this.searchSelect = new _Select_Select_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"](container, \"searchCard__select\", \"searchSelect\", \"searchSelect\");\n      this.nameOption = new _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"](this.searchSelect.element, \"select__option\", \"nameOption\", \"Name\", \"name\");\n      this.nationalityOption = new _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"](this.searchSelect.element, \"select__option\", \"nationalityOption\", \"Nationality\", \"nationality\");\n      this.occupationOption = new _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"](this.searchSelect.element, \"select__option\", \"occupationOption\", \"Occupation\", \"occupation\");\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.searchSelect.element, \"change\", function (event) {\n        _this.changeSearchCategory(event.target.value);\n      });\n    }\n  }, {\n    key: \"createButtons\",\n    value: function createButtons(container) {\n      this.immediateButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"immediateButton\", \"Immediate\");\n      this.onSubmitButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"onSubmitButton\", \"onSubmit\");\n      this.onDebounceButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"onDebounceButton\", \"onDebounce\");\n      this.onThrottleButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"onThrottleButton\", \"onThrottle\");\n    }\n  }, {\n    key: \"changeSearchCategory\",\n    value: function changeSearchCategory(category) {\n      this.category = category;\n      this.filterAndDisplay();\n    }\n  }, {\n    key: \"updateSearchInputs\",\n    value: function updateSearchInputs() {\n      this.searchForm.unmount();\n      this.searchSelect.unmount();\n      this.createSearchForm(this.searchCard);\n      this.createSearchSelect(this.searchCard);\n    }\n  }, {\n    key: \"addButtonsEventListeners\",\n    value: function addButtonsEventListeners() {\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.immediateButton.element, \"click\", this.addInputOnImmidiateEventListener.bind(this));\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.onSubmitButton.element, \"click\", this.addInputOnSubmitEventListener.bind(this));\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.onDebounceButton.element, \"click\", this.addInputOnDebounceEventListener.bind(this));\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.onThrottleButton.element, \"click\", this.addInputOnThrottleEventListener.bind(this));\n    }\n  }, {\n    key: \"addInputOnImmidiateEventListener\",\n    value: function addInputOnImmidiateEventListener() {\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.addPreventDefaultEvent)(this.searchForm.element);\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnImmediateEventListener)(this.searchInput.element, this.searchEvent.bind(this));\n    }\n  }, {\n    key: \"addInputOnSubmitEventListener\",\n    value: function addInputOnSubmitEventListener() {\n      var _this2 = this;\n\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnSubmitEventListener)(this.searchForm.element, this.searchInput.element, this.changeInputValue.bind(this), function (event) {\n        event.preventDefault();\n\n        _this2.filterAndDisplay();\n      });\n    }\n  }, {\n    key: \"addInputOnDebounceEventListener\",\n    value: function addInputOnDebounceEventListener() {\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.addPreventDefaultEvent)(this.searchForm.element);\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnDebounceEventListener)(this.searchInput.element, this.searchEvent.bind(this));\n    }\n  }, {\n    key: \"addInputOnThrottleEventListener\",\n    value: function addInputOnThrottleEventListener() {\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.addPreventDefaultEvent)(this.searchForm.element);\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnThrottleEventListener)(this.searchInput.element, this.searchEvent.bind(this));\n    }\n  }, {\n    key: \"changeDisplayedData\",\n    value: function changeDisplayedData() {\n      this.listCard.remove();\n      this.createListCard(this.appContainer);\n      this.displayData();\n    }\n  }, {\n    key: \"displayData\",\n    value: function displayData() {\n      var _this3 = this;\n\n      this.listOfData.getData().forEach(function (element) {\n        __webpack_require__(\"./src/components lazy recursive\")(element.img).then(function (img) {\n          new _listElem_listElem_js__WEBPACK_IMPORTED_MODULE_7__[\"default\"](_this3.listCard, \"listCard__listElem\", \"listElem\", \"\".concat(element.name, \" \").concat(element.surname), element.mostKnownWork, element.nationality, element.img, \"\".concat(element.name, \" \").concat(element.surname), element.occupation.join(\", \").trim(), \"\".concat(element.lived.born, \", to \").concat(element.lived.deceased));\n        });\n      });\n    }\n  }, {\n    key: \"filterAndDisplay\",\n    value: function filterAndDisplay() {\n      this.listOfData.setData((0,_utility_filterArray_js__WEBPACK_IMPORTED_MODULE_1__.filterArray)(this.category, this.inputValue, this.listOfData.getBaseData()));\n      this.changeDisplayedData();\n    }\n  }, {\n    key: \"searchEvent\",\n    value: function searchEvent(event) {\n      this.changeInputValue(event);\n      this.filterAndDisplay();\n    }\n  }, {\n    key: \"changeInputValue\",\n    value: function changeInputValue(event) {\n      this.inputValue = event.target.value;\n    }\n  }]);\n\n  return App;\n}();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/components/App.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utility/eventListenerActions.js */ \"./src/utility/eventListenerActions.js\");\n/* harmony import */ var _utility_filterArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utility/filterArray.js */ \"./src/utility/filterArray.js\");\n/* harmony import */ var _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Button/Button.js */ \"./src/components/Button/Button.js\");\n/* harmony import */ var _Form_Form_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Form/Form.js */ \"./src/components/Form/Form.js\");\n/* harmony import */ var _Input_Input_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Input/Input.js */ \"./src/components/Input/Input.js\");\n/* harmony import */ var _Select_Select_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Select/Select.js */ \"./src/components/Select/Select.js\");\n/* harmony import */ var _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Option/Option.js */ \"./src/components/Option/Option.js\");\n/* harmony import */ var _listElem_listElem_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./listElem/listElem.js */ \"./src/components/listElem/listElem.js\");\n/* harmony import */ var _data_Data_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../data/Data.js */ \"./src/data/Data.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\n\n\n\n\n\n\n\n\n\n\n\nvar App = /*#__PURE__*/function () {\n  function App() {\n    _classCallCheck(this, App);\n\n    this.listOfData = new _data_Data_js__WEBPACK_IMPORTED_MODULE_8__[\"default\"]();\n    this.category = \"name\";\n    this.inputValue = \"\";\n    this.appContainer = document.getElementById(\"container\");\n  }\n\n  _createClass(App, [{\n    key: \"live\",\n    value: function live() {\n      this.createContainers(this.appContainer);\n      this.createButtons(this.modeButtonsCard);\n      this.createSearchForm(this.searchCard);\n      this.createSearchSelect(this.searchCard);\n      this.displayData();\n      this.addButtonsEventListeners();\n      this.addInputOnImmidiateEventListener();\n    }\n  }, {\n    key: \"createContainers\",\n    value: function createContainers(appContainer) {\n      this.createModeButtonCard(appContainer);\n      this.createSearchCard(appContainer);\n      this.createListCard(appContainer);\n    }\n  }, {\n    key: \"createModeButtonCard\",\n    value: function createModeButtonCard(appContainer) {\n      this.modeButtonsCard = document.createElement(\"div\");\n      this.modeButtonsCard.classList.add(\"buttonsCard\");\n      this.modeButtonsCard.setAttribute(\"id\", \"buttonsCard\");\n      appContainer.appendChild(this.modeButtonsCard);\n    }\n  }, {\n    key: \"createSearchCard\",\n    value: function createSearchCard(appContainer) {\n      this.searchCard = document.createElement(\"div\");\n      this.searchCard.classList.add(\"searchCard\");\n      this.searchCard.setAttribute(\"id\", \"searchCard\");\n      appContainer.appendChild(this.searchCard);\n    }\n  }, {\n    key: \"createListCard\",\n    value: function createListCard(appContainer) {\n      this.listCard = document.createElement(\"div\");\n      this.listCard.classList.add(\"listCard\");\n      this.listCard.setAttribute(\"id\", \"listCard\");\n      appContainer.appendChild(this.listCard);\n    }\n  }, {\n    key: \"createSearchForm\",\n    value: function createSearchForm(container) {\n      this.searchForm = new _Form_Form_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"](container, \"searchCard__form\", \"searchForm\");\n      this.searchInput = new _Input_Input_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"](this.searchForm.element, \"searchCard__input\", \"searchInput\", \"text\", \"search\");\n    }\n  }, {\n    key: \"createSearchSelect\",\n    value: function createSearchSelect(container) {\n      var _this = this;\n\n      this.searchSelect = new _Select_Select_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"](container, \"searchCard__select\", \"searchSelect\", \"searchSelect\");\n      this.nameOption = new _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"](this.searchSelect.element, \"select__option\", \"nameOption\", \"Name\", \"name\");\n      this.nationalityOption = new _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"](this.searchSelect.element, \"select__option\", \"nationalityOption\", \"Nationality\", \"nationality\");\n      this.occupationOption = new _Option_Option_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"](this.searchSelect.element, \"select__option\", \"occupationOption\", \"Occupation\", \"occupation\");\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.searchSelect.element, \"change\", function (event) {\n        _this.changeSearchCategory(event.target.value);\n      });\n    }\n  }, {\n    key: \"createButtons\",\n    value: function createButtons(container) {\n      this.immediateButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"immediateButton\", \"Immediate\");\n      this.onSubmitButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"onSubmitButton\", \"onSubmit\");\n      this.onDebounceButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"onDebounceButton\", \"onDebounce\");\n      this.onThrottleButton = new _Button_Button_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](container, \"buttonsCard__button\", \"onThrottleButton\", \"onThrottle\");\n    }\n  }, {\n    key: \"changeSearchCategory\",\n    value: function changeSearchCategory(category) {\n      this.category = category;\n      this.filterAndDisplay();\n    }\n  }, {\n    key: \"updateSearchInputs\",\n    value: function updateSearchInputs() {\n      this.searchForm.unmount();\n      this.searchSelect.unmount();\n      this.createSearchForm(this.searchCard);\n      this.createSearchSelect(this.searchCard);\n    }\n  }, {\n    key: \"addButtonsEventListeners\",\n    value: function addButtonsEventListeners() {\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.immediateButton.element, \"click\", this.addInputOnImmidiateEventListener.bind(this));\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.onSubmitButton.element, \"click\", this.addInputOnSubmitEventListener.bind(this));\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.onDebounceButton.element, \"click\", this.addInputOnDebounceEventListener.bind(this));\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.newEventListener)(this.onThrottleButton.element, \"click\", this.addInputOnThrottleEventListener.bind(this));\n    }\n  }, {\n    key: \"addInputOnImmidiateEventListener\",\n    value: function addInputOnImmidiateEventListener() {\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.addPreventDefaultEvent)(this.searchForm.element);\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnImmediateEventListener)(this.searchInput.element, this.searchEvent.bind(this));\n    }\n  }, {\n    key: \"addInputOnSubmitEventListener\",\n    value: function addInputOnSubmitEventListener() {\n      var _this2 = this;\n\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnSubmitEventListener)(this.searchForm.element, this.searchInput.element, this.changeInputValue.bind(this), function (event) {\n        event.preventDefault();\n\n        _this2.filterAndDisplay();\n      });\n    }\n  }, {\n    key: \"addInputOnDebounceEventListener\",\n    value: function addInputOnDebounceEventListener() {\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.addPreventDefaultEvent)(this.searchForm.element);\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnDebounceEventListener)(this.searchInput.element, this.searchEvent.bind(this));\n    }\n  }, {\n    key: \"addInputOnThrottleEventListener\",\n    value: function addInputOnThrottleEventListener() {\n      this.inputValue = \"\";\n      this.updateSearchInputs();\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.addPreventDefaultEvent)(this.searchForm.element);\n      (0,_utility_eventListenerActions_js__WEBPACK_IMPORTED_MODULE_0__.setOnThrottleEventListener)(this.searchInput.element, this.searchEvent.bind(this));\n    }\n  }, {\n    key: \"changeDisplayedData\",\n    value: function changeDisplayedData() {\n      this.listCard.remove();\n      this.createListCard(this.appContainer);\n      this.displayData();\n    }\n  }, {\n    key: \"displayData\",\n    value: function displayData() {\n      var _this3 = this;\n\n      this.listOfData.getData().forEach(function (element) {\n        __webpack_require__(\"./src/assets lazy recursive ^\\\\.\\\\/.*$\")(\"./\".concat(element.img)).then(function (img) {\n          new _listElem_listElem_js__WEBPACK_IMPORTED_MODULE_7__[\"default\"](_this3.listCard, \"listCard__listElem\", \"listElem\", \"\".concat(element.name, \" \").concat(element.surname), element.mostKnownWork, element.nationality, img, \"\".concat(element.name, \" \").concat(element.surname), element.occupation.join(\", \").trim(), \"\".concat(element.lived.born, \", to \").concat(element.lived.deceased));\n        });\n      }); // });\n    }\n  }, {\n    key: \"filterAndDisplay\",\n    value: function filterAndDisplay() {\n      this.listOfData.setData((0,_utility_filterArray_js__WEBPACK_IMPORTED_MODULE_1__.filterArray)(this.category, this.inputValue, this.listOfData.getBaseData()));\n      this.changeDisplayedData();\n    }\n  }, {\n    key: \"searchEvent\",\n    value: function searchEvent(event) {\n      this.changeInputValue(event);\n      this.filterAndDisplay();\n    }\n  }, {\n    key: \"changeInputValue\",\n    value: function changeInputValue(event) {\n      this.inputValue = event.target.value;\n    }\n  }]);\n\n  return App;\n}();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/components/App.js?");
 
 /***/ }),
 
@@ -60,7 +60,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _BaseComponent_Component_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseComponent/Component.js */ \"./src/components/BaseComponent/Component.js\");\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && \"function\" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }, _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, \"prototype\", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } else if (call !== void 0) { throw new TypeError(\"Derived constructors may only return object or undefined\"); } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\n\n\nvar Image = /*#__PURE__*/function (_Component) {\n  _inherits(Image, _Component);\n\n  var _super = _createSuper(Image);\n\n  function Image(container, className, id, src, alt) {\n    var _this;\n\n    _classCallCheck(this, Image);\n\n    _this = _super.call(this, container, \"img\", className, id);\n\n    _this.setSrc(src);\n\n    _this.setAlt(alt);\n\n    return _this;\n  }\n\n  _createClass(Image, [{\n    key: \"setSrc\",\n    value: function setSrc(src) {\n      this.element.setAttribute(\"src\", src);\n      this.src = src;\n    }\n  }, {\n    key: \"setAlt\",\n    value: function setAlt(alt) {\n      this.element.setAttribute(\"alt\", alt);\n      this.alt = alt;\n    }\n  }]);\n\n  return Image;\n}(_BaseComponent_Component_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Image);\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/components/Image/Image.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _BaseComponent_Component_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BaseComponent/Component.js */ \"./src/components/BaseComponent/Component.js\");\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && \"function\" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }, _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, \"prototype\", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } else if (call !== void 0) { throw new TypeError(\"Derived constructors may only return object or undefined\"); } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\n\n\nvar Image = /*#__PURE__*/function (_Component) {\n  _inherits(Image, _Component);\n\n  var _super = _createSuper(Image);\n\n  function Image(container, className, id, src, alt) {\n    var _this;\n\n    _classCallCheck(this, Image);\n\n    _this = _super.call(this, container, \"img\", className, id);\n\n    _this.setSrc(src);\n\n    _this.setAlt(alt);\n\n    return _this;\n  }\n\n  _createClass(Image, [{\n    key: \"setSrc\",\n    value: function setSrc(src) {\n      this.element.src = src;\n    }\n  }, {\n    key: \"setAlt\",\n    value: function setAlt(alt) {\n      this.element.setAttribute(\"alt\", alt);\n      this.alt = alt;\n    }\n  }]);\n\n  return Image;\n}(_BaseComponent_Component_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Image);\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/components/Image/Image.js?");
 
 /***/ }),
 
@@ -295,13 +295,13 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/components lazy recursive":
-/*!***********************************************!*\
-  !*** ./src/components/ lazy namespace object ***!
-  \***********************************************/
-/***/ ((module) => {
+/***/ "./src/assets lazy recursive ^\\.\\/.*$":
+/*!****************************************************!*\
+  !*** ./src/assets/ lazy ^\.\/.*$ namespace object ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("function webpackEmptyAsyncContext(req) {\n\t// Here Promise.resolve().then() is used instead of new Promise() to prevent\n\t// uncaught exception popping up in devtools\n\treturn Promise.resolve().then(() => {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t});\n}\nwebpackEmptyAsyncContext.keys = () => ([]);\nwebpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;\nwebpackEmptyAsyncContext.id = \"./src/components lazy recursive\";\nmodule.exports = webpackEmptyAsyncContext;\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/components/_lazy_namespace_object?");
+eval("var map = {\n\t\"./beksinski_zdzislaw.jpg\": [\n\t\t\"./src/assets/beksinski_zdzislaw.jpg\",\n\t\t\"src_assets_beksinski_zdzislaw_jpg\"\n\t],\n\t\"./cloude_debussy.jpg\": [\n\t\t\"./src/assets/cloude_debussy.jpg\",\n\t\t\"src_assets_cloude_debussy_jpg\"\n\t],\n\t\"./domenico_scarlotti.jpg\": [\n\t\t\"./src/assets/domenico_scarlotti.jpg\",\n\t\t\"src_assets_domenico_scarlotti_jpg\"\n\t],\n\t\"./edgar_allan_poe.jpg\": [\n\t\t\"./src/assets/edgar_allan_poe.jpg\",\n\t\t\"src_assets_edgar_allan_poe_jpg\"\n\t],\n\t\"./frida_kahlo.jpg\": [\n\t\t\"./src/assets/frida_kahlo.jpg\",\n\t\t\"src_assets_frida_kahlo_jpg\"\n\t],\n\t\"./jacek_malczewski.jpg\": [\n\t\t\"./src/assets/jacek_malczewski.jpg\",\n\t\t\"src_assets_jacek_malczewski_jpg\"\n\t],\n\t\"./johann_sebastian_bach.jpg\": [\n\t\t\"./src/assets/johann_sebastian_bach.jpg\",\n\t\t\"src_assets_johann_sebastian_bach_jpg\"\n\t],\n\t\"./john_ronald_reuel_tolkien.jpg\": [\n\t\t\"./src/assets/john_ronald_reuel_tolkien.jpg\",\n\t\t\"src_assets_john_ronald_reuel_tolkien_jpg\"\n\t],\n\t\"./michelangelo_buonarroti.jpg\": [\n\t\t\"./src/assets/michelangelo_buonarroti.jpg\",\n\t\t\"src_assets_michelangelo_buonarroti_jpg\"\n\t],\n\t\"./pablo_picasso.jpg\": [\n\t\t\"./src/assets/pablo_picasso.jpg\",\n\t\t\"src_assets_pablo_picasso_jpg\"\n\t]\n};\nfunction webpackAsyncContext(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\treturn Promise.resolve().then(() => {\n\t\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\t\te.code = 'MODULE_NOT_FOUND';\n\t\t\tthrow e;\n\t\t});\n\t}\n\n\tvar ids = map[req], id = ids[0];\n\treturn __webpack_require__.e(ids[1]).then(() => {\n\t\treturn __webpack_require__.t(id, 1 | 16);\n\t});\n}\nwebpackAsyncContext.keys = () => (Object.keys(map));\nwebpackAsyncContext.id = \"./src/assets lazy recursive ^\\\\.\\\\/.*$\";\nmodule.exports = webpackAsyncContext;\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/assets/_lazy_^\\.\\/.*$_namespace_object?");
 
 /***/ }),
 
@@ -312,7 +312,7 @@ eval("function webpackEmptyAsyncContext(req) {\n\t// Here Promise.resolve().then
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"Debussy\",\"occupation\":[\"musician\",\"composer\",\"pianist\"],\"nationality\":\"French\",\"mostKnownWork\":\"Clair de Lune\",\"lived\":{\"born\":\"22-08-1862\",\"deceased\":\"25-03-1918\"},\"img\":\"../src/assets/cloude_debuss.jpg\"},{\"id\":2,\"name\":\"Pablo\",\"surname\":\"Picasso\",\"occupation\":[\"painter\",\"sculptor\",\"printmaker\",\"ceramicist\",\"theatre designer\"],\"nationality\":\"Spanish\",\"mostKnownWork\":\"The Weeping Woman\",\"lived\":{\"born\":\"22-10-1881\",\"deceased\":\"08-04-1973\"},\"img\":\"../src/images/pablo_picasso.jpg\"},{\"id\":3,\"name\":\"Frida\",\"surname\":\"Kahlo\",\"occupation\":[\"painter\"],\"nationality\":\"Mexican\",\"mostKnownWork\":\"Self-Portrait with Thorn Necklace and Hummingbird\",\"lived\":{\"born\":\"06-07-1907\",\"deceased\":\"13-07-1954\"},\"img\":\"../src/images/frida_kahlo.jpg\"},{\"id\":4,\"name\":\"Zdzislaw\",\"surname\":\"Beksinski\",\"occupation\":[\"painter\",\"photographer\",\"sculptor\"],\"nationality\":\"Polish\",\"mostKnownWork\":\"AB84\",\"lived\":{\"born\":\"24-02-1929\",\"deceased\":\"21-02-2005\"},\"img\":\"../src/images/beksinski_zdzislaw.jpg\"},{\"id\":5,\"name\":\"Johann Sebastian\",\"surname\":\"Bach\",\"occupation\":[\"composer\",\"musician\"],\"nationality\":\"German\",\"mostKnownWork\":\"Cello Suite No. 1 in G Major\",\"lived\":{\"born\":\"21-03-1685\",\"deceased\":\"28-07-1750\"},\"img\":\"../src/images/johann_sebastian_bach.jpg\"},{\"id\":6,\"name\":\"Jacek\",\"surname\":\"Malczewski\",\"occupation\":[\"painter\"],\"nationality\":\"Polish\",\"mostKnownWork\":\"Melancholia\",\"lived\":{\"born\":\"15-07-1854\",\"deceased\":\"08-10-1929\"},\"img\":\"../src/images/jacek_malczewski.jpg\"},{\"id\":7,\"name\":\"Edgar Allan\",\"surname\":\"Poe\",\"occupation\":[\"poet\",\"editor\",\"literary critic\"],\"nationality\":\"American\",\"mostKnownWork\":\"The Raven\",\"lived\":{\"born\":\"19-01-1809\",\"deceased\":\"07-10-1849\"},\"img\":\"../src/images/edgar_allan_poe.jpg\"},{\"id\":8,\"name\":\"Domenico\",\"surname\":\"Scarlatti\",\"occupation\":[\"composer\"],\"nationality\":\"Italian\",\"mostKnownWork\":\"Sonata K.32\",\"lived\":{\"born\":\"26-10-1685\",\"deceased\":\"23-07-1757\"},\"img\":\"../src/images/domenico_scarlotti.jpg\"},{\"id\":9,\"name\":\"John Ronald Reuel\",\"surname\":\"Tolkien \",\"occupation\":[\"writer\",\"poet\",\"philologist\"],\"nationality\":\"English\",\"mostKnownWork\":\"The Lord of The Rings\",\"lived\":{\"born\":\"03-01-1892\",\"deceased\":\"02-09-1973\"},\"img\":\"../src/images/john_ronald_reuel_tolkien.jpg\"},{\"id\":10,\"name\":\"Michelangelo\",\"surname\":\"Buonarroti \",\"occupation\":[\"sculptor\",\"painter\",\"architect\",\"poet\"],\"nationality\":\"Italian\",\"mostKnownWork\":\"Sistine Chapel ceiling\",\"lived\":{\"born\":\"06-03-1475\",\"deceased\":\"18-02-1564\"},\"img\":\"../src/images/michelangelo_buonarroti.jpg\"}]');\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/data/dummy.json?");
+eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"Debussy\",\"occupation\":[\"musician\",\"composer\",\"pianist\"],\"nationality\":\"French\",\"mostKnownWork\":\"Clair de Lune\",\"lived\":{\"born\":\"22-08-1862\",\"deceased\":\"25-03-1918\"},\"img\":\"cloude_debussy.jpg\"},{\"id\":2,\"name\":\"Pablo\",\"surname\":\"Picasso\",\"occupation\":[\"painter\",\"sculptor\",\"printmaker\",\"ceramicist\",\"theatre designer\"],\"nationality\":\"Spanish\",\"mostKnownWork\":\"The Weeping Woman\",\"lived\":{\"born\":\"22-10-1881\",\"deceased\":\"08-04-1973\"},\"img\":\"pablo_picasso.jpg\"},{\"id\":3,\"name\":\"Frida\",\"surname\":\"Kahlo\",\"occupation\":[\"painter\"],\"nationality\":\"Mexican\",\"mostKnownWork\":\"Self-Portrait with Thorn Necklace and Hummingbird\",\"lived\":{\"born\":\"06-07-1907\",\"deceased\":\"13-07-1954\"},\"img\":\"frida_kahlo.jpg\"},{\"id\":4,\"name\":\"Zdzislaw\",\"surname\":\"Beksinski\",\"occupation\":[\"painter\",\"photographer\",\"sculptor\"],\"nationality\":\"Polish\",\"mostKnownWork\":\"AB84\",\"lived\":{\"born\":\"24-02-1929\",\"deceased\":\"21-02-2005\"},\"img\":\"beksinski_zdzislaw.jpg\"},{\"id\":5,\"name\":\"Johann Sebastian\",\"surname\":\"Bach\",\"occupation\":[\"composer\",\"musician\"],\"nationality\":\"German\",\"mostKnownWork\":\"Cello Suite No. 1 in G Major\",\"lived\":{\"born\":\"21-03-1685\",\"deceased\":\"28-07-1750\"},\"img\":\"johann_sebastian_bach.jpg\"},{\"id\":6,\"name\":\"Jacek\",\"surname\":\"Malczewski\",\"occupation\":[\"painter\"],\"nationality\":\"Polish\",\"mostKnownWork\":\"Melancholia\",\"lived\":{\"born\":\"15-07-1854\",\"deceased\":\"08-10-1929\"},\"img\":\"jacek_malczewski.jpg\"},{\"id\":7,\"name\":\"Edgar Allan\",\"surname\":\"Poe\",\"occupation\":[\"poet\",\"editor\",\"literary critic\"],\"nationality\":\"American\",\"mostKnownWork\":\"The Raven\",\"lived\":{\"born\":\"19-01-1809\",\"deceased\":\"07-10-1849\"},\"img\":\"edgar_allan_poe.jpg\"},{\"id\":8,\"name\":\"Domenico\",\"surname\":\"Scarlatti\",\"occupation\":[\"composer\"],\"nationality\":\"Italian\",\"mostKnownWork\":\"Sonata K.32\",\"lived\":{\"born\":\"26-10-1685\",\"deceased\":\"23-07-1757\"},\"img\":\"domenico_scarlotti.jpg\"},{\"id\":9,\"name\":\"John Ronald Reuel\",\"surname\":\"Tolkien \",\"occupation\":[\"writer\",\"poet\",\"philologist\"],\"nationality\":\"English\",\"mostKnownWork\":\"The Lord of The Rings\",\"lived\":{\"born\":\"03-01-1892\",\"deceased\":\"02-09-1973\"},\"img\":\"john_ronald_reuel_tolkien.jpg\"},{\"id\":10,\"name\":\"Michelangelo\",\"surname\":\"Buonarroti \",\"occupation\":[\"sculptor\",\"painter\",\"architect\",\"poet\"],\"nationality\":\"Italian\",\"mostKnownWork\":\"Sistine Chapel ceiling\",\"lived\":{\"born\":\"06-03-1475\",\"deceased\":\"18-02-1564\"},\"img\":\"michelangelo_buonarroti.jpg\"}]');\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/data/dummy.json?");
 
 /***/ })
 
@@ -342,6 +342,9 @@ eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -352,6 +355,36 @@ eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"
 /******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	(() => {
+/******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
+/******/ 		var leafPrototypes;
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 16: return value when it's Promise-like
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__webpack_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if(typeof value === 'object' && value) {
+/******/ 				if((mode & 4) && value.__esModule) return value;
+/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
+/******/ 			}
+/******/ 			var ns = Object.create(null);
+/******/ 			__webpack_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
+/******/ 			for(var current = mode & 2 && value; typeof current == 'object' && !~leafPrototypes.indexOf(current); current = getProto(current)) {
+/******/ 				Object.getOwnPropertyNames(current).forEach((key) => (def[key] = () => (value[key])));
+/******/ 			}
+/******/ 			def['default'] = () => (value);
+/******/ 			__webpack_require__.d(ns, def);
+/******/ 			return ns;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -367,9 +400,89 @@ eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + "." + {"src_assets_beksinski_zdzislaw_jpg":"c35e4379239cc74c951d","src_assets_cloude_debussy_jpg":"04670947356c4228e58e","src_assets_domenico_scarlotti_jpg":"7a492c273d9c42b3306f","src_assets_edgar_allan_poe_jpg":"d24aaaef8d9ab231e088","src_assets_frida_kahlo_jpg":"0b53948f8f92c28052fa","src_assets_jacek_malczewski_jpg":"6c477703e717b339f8fa","src_assets_johann_sebastian_bach_jpg":"8212378e630c71ca9b16","src_assets_john_ronald_reuel_tolkien_jpg":"10c0914f05797546cc9a","src_assets_michelangelo_buonarroti_jpg":"68c772b561ef61f0cbc1","src_assets_pablo_picasso_jpg":"c86216397d0a8d8de953"}[chunkId] + ".js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		var dataWebpackPrefix = "search-internship-itechart-01:";
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			;
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -381,6 +494,116 @@ eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"build": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						} else installedChunks[chunkId] = 0;
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 		
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunksearch_internship_itechart_01"] = self["webpackChunksearch_internship_itechart_01"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */

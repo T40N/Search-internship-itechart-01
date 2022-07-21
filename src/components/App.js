@@ -203,7 +203,7 @@ class App {
   }
   displayData() {
     this.listOfData.getData().forEach((element) => {
-      import(element.img).then((img) => {
+      import(`../assets/${element.img}`).then((img) => {
         new listElem(
           this.listCard,
           "listCard__listElem",
@@ -211,13 +211,14 @@ class App {
           `${element.name} ${element.surname}`,
           element.mostKnownWork,
           element.nationality,
-          element.img,
+          img.default,
           `${element.name} ${element.surname}`,
           element.occupation.join(", ").trim(),
           `${element.lived.born}, to ${element.lived.deceased}`
         );
       });
     });
+    // });
   }
   filterAndDisplay() {
     this.listOfData.setData(
