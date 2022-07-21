@@ -418,7 +418,7 @@ eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + "." + {"src_assets_beksinski_zdzislaw_jpg":"c35e4379239cc74c951d","src_assets_cloude_debussy_jpg":"04670947356c4228e58e","src_assets_domenico_scarlotti_jpg":"7a492c273d9c42b3306f","src_assets_edgar_allan_poe_jpg":"d24aaaef8d9ab231e088","src_assets_frida_kahlo_jpg":"0b53948f8f92c28052fa","src_assets_jacek_malczewski_jpg":"6c477703e717b339f8fa","src_assets_johann_sebastian_bach_jpg":"8212378e630c71ca9b16","src_assets_john_ronald_reuel_tolkien_jpg":"10c0914f05797546cc9a","src_assets_michelangelo_buonarroti_jpg":"68c772b561ef61f0cbc1","src_assets_pablo_picasso_jpg":"c86216397d0a8d8de953"}[chunkId] + ".js";
+/******/ 			return "src/" + chunkId + "." + {"src_assets_beksinski_zdzislaw_jpg":"70398baf3f9ccca05815","src_assets_cloude_debussy_jpg":"b3b15c6473eaa103f19b","src_assets_domenico_scarlotti_jpg":"11b28f7655f1bf357ba0","src_assets_edgar_allan_poe_jpg":"238aa6dc1a7d629e1908","src_assets_frida_kahlo_jpg":"c91971448c785d0bc9df","src_assets_jacek_malczewski_jpg":"97df3e0dadbd2951752d","src_assets_johann_sebastian_bach_jpg":"c7c7746649c2c2cc4165","src_assets_john_ronald_reuel_tolkien_jpg":"3c61b211f7bd2c5d00ff","src_assets_michelangelo_buonarroti_jpg":"aae9dab64072557755af","src_assets_pablo_picasso_jpg":"8c117e4e08f40faf345b"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -513,7 +513,7 @@ eval("module.exports = JSON.parse('[{\"id\":1,\"name\":\"Claude\",\"surname\":\"
 /******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
 /******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

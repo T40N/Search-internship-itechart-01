@@ -15,7 +15,7 @@
   \**************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"pablo_picasso.jpg\";\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/assets/pablo_picasso.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/pablo_picasso.jpg\";\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/assets/pablo_picasso.jpg?");
 
 /***/ })
 

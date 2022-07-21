@@ -7,15 +7,15 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(self["webpackChunksearch_internship_itechart_01"] = self["webpackChunksearch_internship_itechart_01"] || []).push([["src_assets_jacek_malczewski_jpg"],{
+(self["webpackChunksearch_internship_itechart_01"] = self["webpackChunksearch_internship_itechart_01"] || []).push([["src_assets_domenico_scarlotti_jpg"],{
 
-/***/ "./src/assets/jacek_malczewski.jpg":
-/*!*****************************************!*\
-  !*** ./src/assets/jacek_malczewski.jpg ***!
-  \*****************************************/
+/***/ "./src/assets/domenico_scarlotti.jpg":
+/*!*******************************************!*\
+  !*** ./src/assets/domenico_scarlotti.jpg ***!
+  \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"jacek_malczewski.jpg\";\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/assets/jacek_malczewski.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/domenico_scarlotti.jpg\";\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/assets/domenico_scarlotti.jpg?");
 
 /***/ })
 

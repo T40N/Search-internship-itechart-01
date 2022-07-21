@@ -7,15 +7,15 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(self["webpackChunksearch_internship_itechart_01"] = self["webpackChunksearch_internship_itechart_01"] || []).push([["src_assets_beksinski_zdzislaw_jpg"],{
+(self["webpackChunksearch_internship_itechart_01"] = self["webpackChunksearch_internship_itechart_01"] || []).push([["src_assets_johann_sebastian_bach_jpg"],{
 
-/***/ "./src/assets/beksinski_zdzislaw.jpg":
-/*!*******************************************!*\
-  !*** ./src/assets/beksinski_zdzislaw.jpg ***!
-  \*******************************************/
+/***/ "./src/assets/johann_sebastian_bach.jpg":
+/*!**********************************************!*\
+  !*** ./src/assets/johann_sebastian_bach.jpg ***!
+  \**********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"beksinski_zdzislaw.jpg\";\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/assets/beksinski_zdzislaw.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/johann_sebastian_bach.jpg\";\n\n//# sourceURL=webpack://search-internship-itechart-01/./src/assets/johann_sebastian_bach.jpg?");
 
 /***/ })
 

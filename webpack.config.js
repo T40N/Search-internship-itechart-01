@@ -8,9 +8,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "docs"),
-    filename: "[name].[contenthash].js",
+    filename: "src/[name].[contenthash].js",
     clean: true,
-    assetModuleFilename: "[name][ext]",
+    assetModuleFilename: "assets/[name][ext]",
   },
   devServer: {
     static: {
