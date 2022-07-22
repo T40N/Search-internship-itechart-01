@@ -203,20 +203,19 @@ class App {
   }
   displayData() {
     this.listOfData.getData().forEach((element) => {
-      import(`../assets/${element.img}`).then((img) => {
-        new listElem(
-          this.listCard,
-          "listCard__listElem",
-          "listElem",
-          `${element.name} ${element.surname}`,
-          element.mostKnownWork,
-          element.nationality,
-          img.default,
-          `${element.name} ${element.surname}`,
-          element.occupation.join(", ").trim(),
-          `${element.lived.born}, to ${element.lived.deceased}`
-        );
-      });
+      const img = require(`../assets/${element.img}`);
+      new listElem(
+        this.listCard,
+        "listCard__listElem",
+        "listElem",
+        `${element.name} ${element.surname}`,
+        element.mostKnownWork,
+        element.nationality,
+        img,
+        `${element.name} ${element.surname}`,
+        element.occupation.join(", ").trim(),
+        `${element.lived.born}, to ${element.lived.deceased}`
+      );
     });
     // });
   }
